@@ -1,5 +1,15 @@
 interface ImageDataProps {
+  /**
+   * Allow maximal width for the exported image. Height will be calculated using original aspect ratio to avoid distortion
+   */
   maxImageWidth: number;
+  /** Exported file format */
+  exportFormat?: EExportFormat;
+}
+
+enum EExportFormat {
+  JPG = "JPG",
+  PNG = "PNG",
 }
 
 enum ERejectReason {
@@ -13,9 +23,11 @@ enum ERejectReason {
 
 export class ImageData {
   maxImageWidth;
+  exportFormat;
 
-  constructor({ maxImageWidth }: ImageDataProps) {
+  constructor({ maxImageWidth = 200, exportFormat = EExportFormat.PNG }: ImageDataProps) {
     this.maxImageWidth = maxImageWidth;
+    this.exportFormat = exportFormat;
   }
   private imageLoaded = (img: HTMLImageElement): Promise<string> => {
     return new Promise((resolve, reject) => {
@@ -98,7 +110,7 @@ export class ImageData {
       imageData
         .onChange(e)
         .then(base => {
-          // console.log(base);
+          console.log(base);
         })
         .catch(err => {
           console.log("error: ", err);

@@ -6,10 +6,12 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve",
     "build": "webpack",
-    "linter": "eslint \"**/*{.tsx,.ts}\" --fix"
+    "linter": "eslint \"**/*{.tsx,.ts}\" --fix",
+    "doc": "typedoc --out docs/ src/"
   },
   "keywords": [
-    "TypeScript",
+    "convert image",
+    "reformat image",
     "Browser"
   ],
   "author": "Emre Sakarya https://github.com/softberry",
@@ -25,6 +27,7 @@
     "husky": "^4.3.6",
     "prettier": "^2.2.1",
     "ts-loader": "^8.0.11",
+    "typedoc": "^0.19.2",
     "typescript": "^4.1.3",
     "webpack": "^4.44.2",
     "webpack-cli": "^4.2.0",

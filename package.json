@@ -35,7 +35,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn linter"
+      "pre-commit": "yarn linter && yarn doc && yarn build"
     }
   }
 }

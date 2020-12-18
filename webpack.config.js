@@ -11,6 +11,8 @@ module.exports = {
   output: {
     path: buildPath,
     filename: "save-image-as.js",
+    library: "SaveImage",
+    libraryTarget: "window",
   },
 
   module: {
@@ -32,7 +34,7 @@ module.exports = {
     extensions: ["*", ".js", ".ts"],
   },
 
-  devtool: "inline-source-map",
+  devtool: "source-map",
 
   plugins: [
     new HtmlWebpackPlugin({

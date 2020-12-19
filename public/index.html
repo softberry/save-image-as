@@ -2,10 +2,30 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <title>Draw On Canvas Preview</title>
+    <title>Save Image As Preview</title>
   </head>
   <body>
-    <canvas width="400" height="400" id="drawOnMe"></canvas>
+    <img id="result" />
     <input type="file" accept=".jpg,.jpeg,.png,.tiff,.svg," id="imageFile" />
+    <script>
+      window.addEventListener("load", () => {
+        const file = document.getElementById("imageFile");
+        const maxImageWidth = 200;
+        const imageData = SaveImage.asPNG(maxImageWidth, 0.25);
+
+        file &&
+          file.addEventListener("change", e => {
+            imageData
+              .onChange(e)
+              .then(base => {
+                console.log("done!");
+                document.getElementById("result").src = base;
+              })
+              .catch(err => {
+                console.log("error: ", err);
+              });
+          });
+      });
+    </script>
   </body>
 </html>

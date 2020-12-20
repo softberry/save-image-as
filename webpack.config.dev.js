@@ -1,16 +1,15 @@
-const path = require("path");
+const { resolve, join } = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const publicPath = path.resolve(__dirname, "public");
-const srcPath = path.resolve(__dirname, "src");
-const buildPathWeb = path.resolve(__dirname, "build");
+const publicPath = resolve(__dirname, "public");
+const buildPath = resolve(__dirname, "dist");
 
-const forBrowser = {
-  entry: path.join(srcPath, "save-image-as.ts"),
+const base = require("./webpack.config.base");
+module.exports = {
+  ...base,
   mode: "development",
-  target: false,
   output: {
-    path: buildPathWeb,
+    path: buildPath,
     filename: "save-image-as.js",
     library: "SaveImageAs",
     libraryTarget: "window",
@@ -39,10 +38,8 @@ const forBrowser = {
 
   plugins: [
     new HtmlWebpackPlugin({
-      template: path.join(publicPath, "index.html"),
+      template: join(publicPath, "index.html"),
       title: "Save Image As",
     }),
   ],
 };
-
-module.exports = forBrowser;

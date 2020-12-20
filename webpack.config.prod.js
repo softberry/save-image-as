@@ -1,48 +1,35 @@
-const path = require("path");
+const { resolve } = require("path");
 
-const srcPath = path.resolve(__dirname, "src");
-const buildPathWeb = path.resolve(__dirname, "build");
-
-const forBrowser = {
-  entry: path.join(srcPath, "save-image-as.ts"),
-  mode: "production",
-  target: false,
-  output: {
-    path: buildPathWeb,
-    filename: "save-image-as.js",
-    library: "SaveImageAs",
-    libraryTarget: "window",
-  },
-
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
-      },
-      {
-        test: /\.ts$/,
-        exclude: /node_modules/,
-        loader: "ts-loader",
-      },
-    ],
-  },
-
-  resolve: {
-    extensions: ["*", ".js", ".ts"],
-  },
-};
-
+const buildPath = resolve(__dirname, "build");
+const base = require("./webpack.config.base");
+const dev = require("./webpack.config.dev");
 module.exports = [
-  forBrowser,
+  { ...dev, mode: "production" },
   {
-    ...forBrowser,
-    entry: path.join(srcPath, "index.ts"),
-    target: "es6",
+    ...base,
+    mode: "production",
     output: {
-      path: buildPathWeb,
-      filename: "save-image-as.module.js",
+      path: buildPath,
+      filename: "save-image-as.js",
+    },
+
+    module: {
+      rules: [
+        {
+          test: /\.js$/,
+          exclude: /node_modules/,
+          loader: "babel-loader",
+        },
+        {
+          test: /\.ts$/,
+          exclude: /node_modules/,
+          loader: "ts-loader",
+        },
+      ],
+    },
+
+    resolve: {
+      extensions: ["*", ".js", ".ts"],
     },
   },
 ];

@@ -1,6 +1,6 @@
 {
   "name": "save-image-as",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "description": "Convert any image to png in browser",
   "main": "build/save-image-as.js",
   "types": "build/index.d.ts",

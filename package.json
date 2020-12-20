@@ -1,8 +1,8 @@
 {
   "name": "save-image-as",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Convert any image to png in browser",
-  "main": "build/saveImageAs.js",
+  "main": "build/save-image-as.module.js",
   "types": "build/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

@@ -11,7 +11,7 @@
       window.addEventListener("load", () => {
         const file = document.getElementById("imageFile");
         const maxImageWidth = 200;
-        const imageData = SaveImage.asPNG(maxImageWidth, 0.25);
+        const imageData = SaveImageAs.PNG(maxImageWidth, 0.25);
 
         file &&
           file.addEventListener("change", e => {

@@ -3,15 +3,16 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const publicPath = path.resolve(__dirname, "public");
 const srcPath = path.resolve(__dirname, "src");
-const buildPath = path.resolve(__dirname, "build");
+const buildPathWeb = path.resolve(__dirname, "build");
 
-module.exports = {
-  entry: path.join(srcPath, "index.ts"),
+const forBrowser = {
+  entry: path.join(srcPath, "save-image-as.ts"),
   mode: "development",
+  target: false,
   output: {
-    path: buildPath,
+    path: buildPathWeb,
     filename: "save-image-as.js",
-    library: "SaveImage",
+    library: "SaveImageAs",
     libraryTarget: "window",
   },
 
@@ -39,7 +40,22 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(publicPath, "index.html"),
-      filename: "index.html",
+      title: "Save Image As",
     }),
   ],
 };
+
+module.exports = [
+  forBrowser,
+  {
+    ...forBrowser,
+    entry: path.join(srcPath, "index.ts"),
+    target: "es6",
+    devtool: undefined,
+    plugins: [],
+    output: {
+      path: buildPathWeb,
+      filename: "save-image-as.module.js",
+    },
+  },
+];

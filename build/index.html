@@ -1,11 +1,7 @@
 <!doctype html><html><head><meta charset="utf-8"/><title>Save Image As Preview</title></head><body><img id="result"/> <input type="file" accept=".jpg,.jpeg,.png,.tiff,.svg," id="imageFile"/><script>window.addEventListener("load", () => {
         const file = document.getElementById("imageFile");
         const maxImageWidth = 200;
-        const imageData = new SaveImageAs.SaveImageAs({
-          maxImageWidth,
-          exportFormat: "image/jpeg",
-          exportQuality: 0.25,
-        });
+        const imageData = SaveImageAs.PNG(maxImageWidth, 0.25);
 
         file &&
           file.addEventListener("change", e => {

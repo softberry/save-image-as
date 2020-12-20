@@ -1,13 +1,13 @@
 {
   "compilerOptions": {
-    "module": "CommonJS",
+    "module": "AMD",
     "strict": true,
     "noImplicitReturns": true,
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
     "declaration": true,
-    "target": "es2015",
+    "target": "ES2015",
     "lib": ["es2017", "dom"],
     "outDir": "build",
     "rootDir": "./src",

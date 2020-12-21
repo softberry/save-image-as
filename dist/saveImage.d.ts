@@ -15,15 +15,16 @@ export declare enum ERejectReason {
     FILE_HAS_NO_READIBLE_DATA = "FILE_HAS_NO_READIBLE_DATA",
     NO_IMAGE_FILE_SELECTED = "NO_IMAGE_FILE_SELECTED"
 }
+export interface ISaveImageOptions {
+    maxImageWidth: number;
+    exportFormat: EExportFormat;
+    exportQuality: number;
+}
 export declare class SaveImage {
     maxImageWidth: number;
     exportFormat: EExportFormat;
     exportQuality: EExportQuality;
-    constructor({ maxImageWidth, exportFormat, exportQuality }: {
-        maxImageWidth?: number | undefined;
-        exportFormat?: EExportFormat | undefined;
-        exportQuality?: number | undefined;
-    });
+    constructor({ maxImageWidth, exportFormat, exportQuality }: ISaveImageOptions);
     private cleanUp;
     private imageLoaded;
     private imageData;

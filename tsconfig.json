@@ -9,7 +9,7 @@
     "declaration": true,
     "target": "ES2015",
     "lib": ["es2017", "dom"],
-    "outDir": "build",
+    "outDir": "dist",
     "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
@@ -17,5 +17,5 @@
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules/*"]
+  "exclude": ["node_modules/*", "build", "dist", "docs"]
 }

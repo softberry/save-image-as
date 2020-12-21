@@ -6,12 +6,12 @@ Convert any image format to `JPG` or `PNG` in browser to Base64 format.
 
 1- **Create constructor with (or without) options**:
 
-    const { onChange } = new SaveImageAs();
+    const saveImageAs = new SaveImageAs();
 
 2- **Create Custom handler for using image data**
 
     function myCustomImageHandler(event){
-        onChange(event)
+        saveImageAs.onChange(event)
         .then(data=>{
             // Use your date as you like
         })

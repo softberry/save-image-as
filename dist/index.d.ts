@@ -5,3 +5,4 @@ export declare const WEBP: (maxWidth: number, quality: EExportQuality) => SaveIm
 export declare const GIF: (maxWidth: number, quality: EExportQuality) => SaveImage;
 export declare const TIFF: (maxWidth: number, quality: EExportQuality) => SaveImage;
 export declare const SVG: (maxWidth: number, quality: EExportQuality) => SaveImage;
+export declare const SaveImageAs: typeof SaveImage;

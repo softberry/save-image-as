@@ -17,4 +17,5 @@ export const TIFF = (maxWidth, quality) => {
 export const SVG = (maxWidth, quality) => {
     return new SaveImage({ maxImageWidth: maxWidth, exportFormat: EExportFormat.SVG, exportQuality: quality });
 };
+export const SaveImageAs = SaveImage;
 //# sourceMappingURL=index.js.map

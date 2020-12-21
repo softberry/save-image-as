@@ -1,13 +1,13 @@
 {
   "name": "save-image-as",
-  "version": "0.0.23",
+  "version": "0.0.24",
   "description": "Convert any image to png in browser",
-  "main": "build/index.js",
-  "types": "build/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve -c webpack.config.dev.js",
-    "build": "rm -rf build/ && npx tsc",
+    "build": "rm -rf dist/ && npx tsc && webpack -c webpack.config.prod.js",
     "linter": "eslint \"**/*{.tsx,.ts}\" --fix",
     "doc": "typedoc --out docs/ src/"
   },
@@ -37,7 +37,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn linter && yarn doc && yarn build && git add docs/ build/"
+      "pre-commit": "yarn linter && yarn doc && yarn build && git add docs/ dist/"
     }
   }
 }

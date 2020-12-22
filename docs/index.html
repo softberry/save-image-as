@@ -68,8 +68,9 @@
 				<p>Get this package from npm:
 				<code>npm install save-image-as</code> or <code>yarn add save-image-as</code></p>
 				<p>If you do not have a build routine (webpack, rollout etc.) simply include save-image-as script over an cdn in your html file for example : <code>&lt;script src=&quot;https://unpkg.com/browse/save-image-as@latest/dist/save-image-as.js&quot;&gt;&lt;/script&gt;</code>.</p>
-				<p>In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package like this:
-				<code>import {PNG, /*JPG,WEBP*/} from &quot;save-image-as&quot;</code> then assign onChange method as your file input&#39;s onChange evant handler.</p>
+				<p>In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package like this:</p>
+				<p><code>import {PNG, /*JPG,WEBP*/} from &quot;save-image-as&quot;</code> then assign onChange method as your file input&#39;s onChange evant handler.</p>
+				<p>Then :</p>
 				<p>1- <strong>Create constructor with (or without) options</strong>:</p>
 				<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">toBase64</span><span style="color: #000000"> = </span><span style="color: #001080">saveImageAs</span><span style="color: #000000">.</span><span style="color: #795E26">PNG</span><span style="color: #000000">(</span><span style="color: #098658">200</span><span style="color: #000000">, </span><span style="color: #098658">.5</span><span style="color: #000000">);</span>
 <span style="color: #008000">// or</span>
@@ -90,9 +91,6 @@
 <span style="color: #001080">fileInput</span><span style="color: #000000">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;change&quot;</span><span style="color: #000000">,</span><span style="color: #001080">myCustomImageHandler</span><span style="color: #000000">);</span>
 
 <span style="color: #008000">// see a working example in public folder</span>
-</code></pre>
-				<p><strong>or</strong></p>
-				<pre><code><span style="color: #000000">&lt;</span><span style="color: #001080">input</span><span style="color: #000000"> </span><span style="color: #001080">type</span><span style="color: #000000">=</span><span style="color: #A31515">&quot;file&quot;</span><span style="color: #000000"> </span><span style="color: #001080">accept</span><span style="color: #000000">=</span><span style="color: #A31515">&quot;.jpg,.png,.svg,.tiff&quot;</span><span style="color: #000000"> </span><span style="color: #001080">id</span><span style="color: #000000">=</span><span style="color: #A31515">&quot;upload&quot;</span><span style="color: #000000"> </span><span style="color: #001080">onChange</span><span style="color: #000000">=</span><span style="color: #A31515">&quot;myCustomImageHandler&quot;</span><span style="color: #000000">&gt;</span>
 </code></pre>
 				<table>
 					<thead>

@@ -10,7 +10,10 @@ Get this package from npm:
 If you do not have a build routine (webpack, rollout etc.) simply include save-image-as script over an cdn in your html file for example : `<script src="https://unpkg.com/browse/save-image-as@latest/dist/save-image-as.js"></script>`.
 
 In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package like this:
+
 `import {PNG, /*JPG,WEBP*/} from "save-image-as"` then assign onChange method as your file input's onChange evant handler.
+
+Then :
 
 1- **Create constructor with (or without) options**:
 
@@ -35,10 +38,6 @@ In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package l
     fileInput.addEventListener("change",myCustomImageHandler);
 
     // see a working example in public folder
-
-**or**
-
-    <input type="file" accept=".jpg,.png,.svg,.tiff" id="upload" onChange="myCustomImageHandler">
 
 | Option          | Default | Description                                            |
 | --------------- | ------- | ------------------------------------------------------ |

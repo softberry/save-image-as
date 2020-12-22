@@ -1,10 +1,7 @@
 export declare enum EExportFormat {
     JPG = "image/jpeg",
     PNG = "image/png",
-    GIF = "image/gif",
-    WEBP = "image/webp",
-    TIFF = "image/tiff",
-    SVG = "image/svg+xml"
+    WEBP = "image/webp"
 }
 export declare type EExportQuality = number;
 export declare enum ERejectReason {

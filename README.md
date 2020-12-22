@@ -1,12 +1,14 @@
 # Save Image As:
 
-Convert any image format to `JPG` or `PNG` in browser to Base64 format.
+Convert any image format to `JPG` , `PNG` or `WEBP` in browser to Base64 format.
 
 ## How To Use:
 
 1- **Create constructor with (or without) options**:
 
-    const saveImageAs = new SaveImageAs();
+    const saveImageAs = new SaveImageAs.PNG(200, .5);
+    // or // const saveImageAs = new SaveImageAs.JPG(200, .5);
+    // or // const saveImageAs = new SaveImageAs.WEBP(200, .5);
 
 2- **Create Custom handler for using image data**
 
@@ -22,14 +24,16 @@ Convert any image format to `JPG` or `PNG` in browser to Base64 format.
     const fileInput = document.getElementById("upload");
     fileInput.addEventListener("change",myCustomImageHandler);
 
+    // see a working example in public folder
+
 **or**
 
     <input type="file" accept=".jpg,.png,.svg,.tiff" id="upload" onChange="myCustomImageHandler">
 
-| Option          | Default | Description                                 |
-| --------------- | ------- | ------------------------------------------- |
-| `maxImageWidth` | 200     | Define maximum width for the exported image |
-| `exportFormat`  | PNG     | Convert source image to `JPG` or `PNG`      |
+| Option          | Default | Description                                            |
+| --------------- | ------- | ------------------------------------------------------ |
+| `maxImageWidth` | 200     | Define maximum width for the exported image            |
+| `exportQuality` | .75     | Quality of exported image. Value must be between 0 - 1 |
 
 ## Errors :
 

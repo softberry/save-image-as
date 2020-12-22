@@ -2,10 +2,7 @@ export var EExportFormat;
 (function (EExportFormat) {
     EExportFormat["JPG"] = "image/jpeg";
     EExportFormat["PNG"] = "image/png";
-    EExportFormat["GIF"] = "image/gif";
     EExportFormat["WEBP"] = "image/webp";
-    EExportFormat["TIFF"] = "image/tiff";
-    EExportFormat["SVG"] = "image/svg+xml";
 })(EExportFormat || (EExportFormat = {}));
 export var ERejectReason;
 (function (ERejectReason) {
@@ -56,6 +53,7 @@ export class SaveImage {
                 this.cleanUp(img);
                 reject(ERejectReason.ABORTED);
             };
+            console.log(this.exportFormat, this.exportQuality);
             canvas.toBlob(blob => {
                 if (blob !== null) {
                     reader.readAsDataURL(blob);

@@ -4,10 +4,7 @@
 export enum EExportFormat {
   JPG = "image/jpeg",
   PNG = "image/png",
-  GIF = "image/gif",
   WEBP = "image/webp",
-  TIFF = "image/tiff",
-  SVG = "image/svg+xml",
 }
 /**
  * Quality of resulting image  between 0 and 1
@@ -85,7 +82,7 @@ export class SaveImage {
         this.cleanUp(img);
         reject(ERejectReason.ABORTED);
       };
-
+      console.log(this.exportFormat, this.exportQuality);
       canvas.toBlob(
         blob => {
           if (blob !== null) {

@@ -11,10 +11,7 @@
       window.addEventListener("load", () => {
         const file = document.getElementById("imageFile");
         const maxImageWidth = 200;
-        const saveImageAs = SaveImageAs.PNG(maxImageWidth, 0.25);
-
-        // const s = new SaveImageAs.main({ maxImageWidth: 200, exportFormat: "image/png", exportQuality: 1 });
-        // const { onChange } = s;
+        const saveImageAs = SaveImageAs.JPG(maxImageWidth, 1);
 
         file &&
           file.addEventListener("change", e => {

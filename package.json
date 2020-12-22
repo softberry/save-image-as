@@ -9,7 +9,7 @@
     "serve": "webpack serve -c webpack.config.dev.js",
     "build": "rm -rf dist/ && npx tsc && webpack -c webpack.config.prod.js",
     "linter": "eslint \"**/*{.tsx,.ts}\" --fix",
-    "doc": "typedoc --out docs/ src/"
+    "doc": "typedoc --out docs/s src/"
   },
   "keywords": [
     "convert image",

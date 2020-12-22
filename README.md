@@ -6,8 +6,6 @@
 
 Convert any image file using html input element to `JPG` , `PNG` or `WEBP` in browser to Base64 format.
 
-## [Documentation](https://softberry.github.io/save-image-as/)
-
 ## How To Use
 
 Get this package from npm:

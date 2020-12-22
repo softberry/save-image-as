@@ -1,205 +1,32 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>save-image-as</title>
-	<meta name="description" content="Documentation for save-image-as">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="assets/css/main.css">
-	<script async src="assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="index.html" class="title">save-image-as</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<h1>save-image-as</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<div class="tsd-panel tsd-typography">
-				<a href="#save-image-as" id="save-image-as" style="color: inherit; text-decoration: none;">
-					<h1>Save Image As:</h1>
-				</a>
-				<p><img src="https://img.shields.io/travis/com/softberry/save-image-as/master?style=for-the-badge" alt="Travis (.com) branch">
-					<img src="https://img.shields.io/npm/v/save-image-as?style=for-the-badge" alt="npm">
-				<img src="https://img.shields.io/npm/l/save-image-as?style=for-the-badge" alt="NPM"></p>
-				<p>Convert any image file using html input element to <code>JPG</code> , <code>PNG</code> or <code>WEBP</code> in browser to Base64 format.</p>
-				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
-					<h2><a href="https://softberry.github.io/save-image-as/">Documentation</a></h2>
-				</a>
-				<a href="#how-to-use" id="how-to-use" style="color: inherit; text-decoration: none;">
-					<h2>How To Use</h2>
-				</a>
-				<p>Get this package from npm:
-				<code>npm install save-image-as</code> or <code>yarn add save-image-as</code></p>
-				<p>If you do not have a build routine (webpack, rollout etc.) simply include save-image-as script over an cdn in your html file for example : <code>&lt;script src=&quot;https://unpkg.com/browse/save-image-as@latest/dist/save-image-as.js&quot;&gt;&lt;/script&gt;</code>.</p>
-				<p>In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package like this:</p>
-				<p><code>import {PNG, /*JPG,WEBP*/} from &quot;save-image-as&quot;</code> then assign onChange method as your file input&#39;s onChange evant handler.</p>
-				<p>Then :</p>
-				<p>1- <strong>Create constructor with (or without) options</strong>:</p>
-				<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">toBase64</span><span style="color: #000000"> = </span><span style="color: #001080">saveImageAs</span><span style="color: #000000">.</span><span style="color: #795E26">PNG</span><span style="color: #000000">(</span><span style="color: #098658">200</span><span style="color: #000000">, </span><span style="color: #098658">.5</span><span style="color: #000000">);</span>
-<span style="color: #008000">// or</span>
-<span style="color: #008000">// const toBase64 =   saveImageAs.JPG(200, .5);</span>
-<span style="color: #008000">// or</span>
-<span style="color: #008000">// const toBase64 =   SaveImageAs.WEBP(200, .5);</span>
-</code></pre>
-				<p>2- <strong>Create Custom handler for using image data</strong></p>
-				<pre><code><span style="color: #0000FF">function</span><span style="color: #000000"> </span><span style="color: #795E26">myCustomImageHandler</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">){</span>
-<span style="color: #000000">    </span><span style="color: #001080">toBase64</span><span style="color: #000000">.</span><span style="color: #795E26">onChange</span><span style="color: #000000">(</span><span style="color: #001080">event</span><span style="color: #000000">)</span>
-<span style="color: #000000">    .</span><span style="color: #795E26">then</span><span style="color: #000000">(</span><span style="color: #001080">data</span><span style="color: #0000FF">=&gt;</span><span style="color: #000000">{</span>
-<span style="color: #000000">        </span><span style="color: #008000">// Use your date as you like</span>
-<span style="color: #000000">    })</span>
-<span style="color: #000000">}</span>
-</code></pre>
-				<p>3- <strong>Assign <code>myCustomImageHandler</code> to file upload element&#39;s <code>onChange</code> method:</strong></p>
-				<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">fileInput</span><span style="color: #000000"> = </span><span style="color: #001080">document</span><span style="color: #000000">.</span><span style="color: #795E26">getElementById</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;upload&quot;</span><span style="color: #000000">);</span>
-<span style="color: #001080">fileInput</span><span style="color: #000000">.</span><span style="color: #795E26">addEventListener</span><span style="color: #000000">(</span><span style="color: #A31515">&quot;change&quot;</span><span style="color: #000000">,</span><span style="color: #001080">myCustomImageHandler</span><span style="color: #000000">);</span>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Save Image As Preview</title>
+  </head>
+  <body>
+    <img id="result" />
+    <input type="file" accept=".jpg,.jpeg,.png,.tiff,.svg," id="imageFile" />
+    <script>
+      window.addEventListener("load", () => {
+        const file = document.getElementById("imageFile");
+        const maxImageWidth = 200;
+        const toBase64 = saveImageAs.JPG(maxImageWidth, 1);
 
-<span style="color: #008000">// see a working example in public folder</span>
-</code></pre>
-				<table>
-					<thead>
-						<tr>
-							<th>Option</th>
-							<th>Default</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td><code>maxImageWidth</code></td>
-							<td>200</td>
-							<td>Define maximum width for the exported image</td>
-						</tr>
-						<tr>
-							<td><code>exportQuality</code></td>
-							<td>.75</td>
-							<td>Quality of exported image. Value must be between 0 - 1</td>
-						</tr>
-				</tbody></table>
-				<a href="#errors-" id="errors-" style="color: inherit; text-decoration: none;">
-					<h2>Errors :</h2>
-				</a>
-				<table>
-					<thead>
-						<tr>
-							<th>Error Code</th>
-							<th>Description</th>
-						</tr>
-					</thead>
-					<tbody><tr>
-							<td><code>COULD_NOT_READ</code></td>
-							<td>Selected file may be corrupt or not an image file.</td>
-						</tr>
-						<tr>
-							<td><code>ABORTED</code></td>
-							<td>File selection cancelled</td>
-						</tr>
-						<tr>
-							<td><code>EMPTY_TRANSFER</code></td>
-							<td>Converted result data has no content.</td>
-						</tr>
-						<tr>
-							<td><code>IMAGE_COULD_NOT_LOADED</code></td>
-							<td>Selected image could not load. Maybe a network error or disk error.</td>
-						</tr>
-						<tr>
-							<td><code>FILE_HAS_NO_READIBLE_DATA</code></td>
-							<td>Selected file has no readible content.</td>
-						</tr>
-						<tr>
-							<td><code>NO_IMAGE_FILE_SELECTED</code></td>
-							<td>Trying to transfer befor selecting an image file.</td>
-						</tr>
-				</tbody></table>
-			</div>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="modules.html">Exports</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="modules/saveimage.html">save<wbr>Image</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="assets/js/main.js"></script>
-</body>
+        file &&
+          file.addEventListener("change", e => {
+            toBase64
+              .onChange(e)
+              .then(base => {
+                console.log("done!");
+                document.getElementById("result").src = base;
+              })
+              .catch(err => {
+                console.log("error: ", err);
+              });
+          });
+      });
+    </script>
+    <script src="https://unpkg.com/browse/save-image-as@latest/dist/save-image-as.js"></script>
+  </body>
 </html>

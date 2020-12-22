@@ -11,11 +11,11 @@
       window.addEventListener("load", () => {
         const file = document.getElementById("imageFile");
         const maxImageWidth = 200;
-        const saveImageAs = saveImageAs.JPG(maxImageWidth, 1);
+        const toBase64 = saveImageAs.JPG(maxImageWidth, 1);
 
         file &&
           file.addEventListener("change", e => {
-            saveImageAs
+            toBase64
               .onChange(e)
               .then(base => {
                 console.log("done!");

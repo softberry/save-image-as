@@ -36,7 +36,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn linter && yarn build && git add docs/ dist/"
+      "pre-commit": "yarn linter && yarn build && git add dist/"
     }
   }
 }

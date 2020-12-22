@@ -8,8 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "webpack serve -c webpack.config.dev.js",
     "build": "rm -rf dist/ && npx tsc && webpack -c webpack.config.prod.js",
-    "linter": "eslint \"**/*{.tsx,.ts}\" --fix",
-    "doc": "typedoc --out docs/s src/"
+    "linter": "eslint \"**/*{.tsx,.ts}\" --fix"
   },
   "keywords": [
     "convert image",
@@ -37,7 +36,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn linter && yarn doc && yarn build && git add docs/ dist/"
+      "pre-commit": "yarn linter && yarn build && git add docs/ dist/"
     }
   }
 }

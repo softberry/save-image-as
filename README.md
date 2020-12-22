@@ -1,8 +1,12 @@
 # Save Image As:
 
-[![Build Status](https://travis-ci.com/softberry/save-image-as.svg?branch=master)](https://travis-ci.com/softberry/save-image-as)
+![Travis (.com) branch](https://img.shields.io/travis/com/softberry/save-image-as/master?style=for-the-badge)
+![npm](https://img.shields.io/npm/v/save-image-as?style=for-the-badge)
+![NPM](https://img.shields.io/npm/l/save-image-as?style=for-the-badge)
 
 Convert any image file using html input element to `JPG` , `PNG` or `WEBP` in browser to Base64 format.
+
+## [Documentation](https://softberry.github.io/save-image-as/)
 
 ## How To Use
 

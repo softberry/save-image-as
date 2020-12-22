@@ -11,7 +11,7 @@ module.exports = {
   output: {
     path: buildPath,
     filename: "save-image-as.js",
-    library: "SaveImageAs",
+    library: "saveImageAs",
     libraryTarget: "global",
   },
 

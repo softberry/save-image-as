@@ -2,7 +2,15 @@
 
 Convert any image format to `JPG` , `PNG` or `WEBP` in browser to Base64 format.
 
-## How To Use:
+## How To Use
+
+Get this package from npm:
+`npm install save-image-as` or `yarn add save-image-as`
+
+If you do not have a build routine (webpack, rollout etc.) simply include save-image-as script over an cdn in your html file for example : `<script src="https://unpkg.com/browse/save-image-as@latest/dist/save-image-as.js"` />.
+
+In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package like this:
+`import {PNG, /*JPG,WEBP*/} from "save-image-as"` then assign onChange method as your file input's onChange evant handler.
 
 1- **Create constructor with (or without) options**:
 
@@ -45,3 +53,5 @@ Convert any image format to `JPG` , `PNG` or `WEBP` in browser to Base64 format.
 | `IMAGE_COULD_NOT_LOADED`    | Selected image could not load. Maybe a network error or disk error. |
 | `FILE_HAS_NO_READIBLE_DATA` | Selected file has no readible content.                              |
 | `NO_IMAGE_FILE_SELECTED`    | Trying to transfer befor selecting an image file.                   |
+
+## JavaScript Frameworks:

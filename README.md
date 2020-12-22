@@ -1,5 +1,7 @@
 # Save Image As:
 
+[![Build Status](https://travis-ci.com/softberry/save-image-as.svg?branch=master)](https://travis-ci.com/softberry/save-image-as)
+
 Convert any image file using html input element to `JPG` , `PNG` or `WEBP` in browser to Base64 format.
 
 ## How To Use

@@ -7,6 +7,7 @@ branches:
 install:
   - yarn
 script:
+  - yarn global add selenium-webdriver
   - yarn build
   - node ./__selenium/basic-test.js
 env:

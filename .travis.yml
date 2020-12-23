@@ -1,17 +1,14 @@
 language: node_js
 node_js:
-- '12'
+  - "12"
 branches:
   only:
-  - master
+    - master
 install:
-- yarn
+  - yarn
 script:
-- yarn build
-- node ./__selenium/basic-test.js
-env:
-  global:
-    secure: XToDCZ1lLQNaHGkRk2vAYQn23yJyMcrOjvDWb0dp4ZaVMXidwCtsM+nbYpdMdVrL5ZlhcW2+I1+Vc/gCkeLPpS/HY4KL9/hIoPuEbZPBr5s5v3KorB7VIdrSQsLsRI+WWb4j8dqKJWS5GMDaR/0lYpQ0KWBlgTOFnFbI1DPvIHonNa6dELigct1HQLPfIlpEmuSFWFD2r4LnNIWiXtfTaAZblnqKlD4Qtmg0QV71KbSp5sL7NmDbYzZEhi6MwDi1RdlMeuZ7IsdJ0iywi6wRlc2+dSqkmIcv1tMalEEuK5Y3p2iig0cJ43bMOmA8bwVWXbuuLoo+ThoHL+xtEUofSs0qY4PKGSd8JVuFGZ08/sCSmHvIceRZk9sBwvjbj7Obpa9inVXwTySCrOVLttavbcU1pQsCLvaoelQKHM/4+iQ+bnm1PLsExZKS7vxFyBFKGXbHDJqkTMwie6cIzYHLCQi/W/R2c/eFtFrNDI9firAqx8NunYzUpU2um9guUpfXPG6C8Ug3iKMCGozvRQH7ghLQIqhdhmLx0s7/pLmPuVQDluZh1dE+ClIDYAX/schPcdU6KEkTkxSOD+YIFYum+bZU6VbsnDwhLjhu6yslFR2CDp1ltaZEhxgj+suioQA4eL8GFFxk1CCtJeInQ7DjyX6+2uwmg0mTKuo3ZNd+2Vg=
+  - yarn build
+  - node ./__selenium/basic-test.js
 addons:
   browserstack:
     username: emresakarya1

@@ -1,15 +1,17 @@
+console.log(process.env);
 const webdriver = require("selenium-webdriver");
 const browserstackLocal = process.env.BROWSERSTACK_LOCAL;
 const browserstackLocalIdentifier = process.env.BROWSERSTACK_LOCAL_IDENTIFIER;
-const dotenv = require("dotenv");
-dotenv.config();
+// const dotenv = require("dotenv");
+// dotenv.config();
+// TODO: uninstall dotenv
 
 var browserstackURL = process.env.BS_URL;
 
 // Input capabilities
 var capabilities = {
-  local: true,
-  localIdentifier: browserstackLocalIdentifier,
+  "browserstack.local": "true",
+  "browserstack.localIdentifier": browserstackLocalIdentifier,
   os: "Windows",
   os_version: "10",
   browserName: "Chrome",

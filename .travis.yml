@@ -1,14 +1,14 @@
 language: node_js
 node_js:
-- '12'
+  - "12"
 branches:
   only:
-  - master
+    - master
 install:
-- yarn
+  - yarn
 script:
-- yarn build
-- node ./__selenium/basic-test.js
+  - yarn build
+  - node ./__selenium/basic-test.js
 addons:
   browserstack:
     username: emresakarya1

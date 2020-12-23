@@ -1,16 +1,16 @@
 language: node_js
 node_js:
-  - "12"
+- '12'
 branches:
   only:
-    - master
+  - master
 install:
-  - yarn
+- yarn
 script:
-  - yarn build
-  - node ./__selenium/basic-test.js
+- yarn build
+- node ./__selenium/basic-test.js
 addons:
   browserstack:
     username: emresakarya1
     access_key:
-      secure: JpT8k4vhBRqGP/2vXAdUtx1tIYyTYj3a2+UoE43GzZSL/ko8EecQALBaBEGcEYwgOhzroZPrAI/J4N7zJtcDpxsQsPGJKVaymRzt0FQx9KT+WIVhDJAWlpzPJEFvnpsC3zDr/lyBcCC10iWkkV/dD4/DdWaw7O1Drn+3IywY5eeUAuAlRV6KnJBEvBaIslR94tRDwQHDsehDX2g7YBpE6gmkvhpkZkOXCd1gutGRlgVQxIURwdsHAeHwrrQsV468eQPHUxGwIDzLvb4HhyO/Lk9wCq60kfC1wetdENJTbxn3BpUx0dfhr4gzs1lJguF+jESjbEm32fO+GmmyT7lkH7VWKZbhoyELRnTpej/1ZKafHXWleMxU1WZSZ2uNG92bbJaK26nCoA9EhYNAZh/rGouslJgDqSQHeqv2ICVO3QX61fNl8Eew9/AAs8AiLQG+/VQ/oRngwkDW6KZ0JvoGjGnqUiOOTk6fqP7pnH6Kd8z+LOeAKqlutPmPVwykIHpydrRMTgNAhr8MmLX3RpkHRSsUE31KLl2nUUCmM6c4AKxr1tJc5ySIbeqWW1lLphBBf861CruhKU61VZZoOCrKrBqUvxWRdMcqmtkkIcIOtUVkyYFPZexu7Pd54i8LCcEaDoMDgHyggr/QByB+BcG4pIjuWZNEcNfqD+LHg77WOmY=
+      secure: rJHHwSnZO8rCsIRFS+M/26qP3wXkfpAGIFf6hGNy8qPXgnUz7nYn5LLF+HyF7ORc21OCL0xR8iKaThtsDx1vxBDeH6DznyqZHRyEB3E/3LnoTyKtim6+UB8OhC38pPdQbCyZo6A+yUrjTpQXuZYj4WWOgcVuhgugPcq2v5THrulN+HiD2ykzSjT8yZYzVPh2JxNbVqQD1imrwBZV7n9g3H7crCjtAn55wipMJdsWZ+TzfBr+8eDSJFr7Om/3hpLZDRD+Sx2HtfCsLfhBpzwiZTe5wqmYBLt0tuTF514Z7HDqTuVdw2aBQi/meTT65tfqd7aMMNgedBsCB1reAU5ePNZtgd2wBD8tXzaDZb6tbJA3Z/HAZ0Ml8X0HmeYQD/5ReJYgLyhOrpd7oyrRIXrsJU8sfXXFjN6RuQZMtUdGfNUPRr7nt/SmrGHctwfCLuEl5LlHlbZ0E1NPrv3ZH3FcBgqmscjEwgZz+nF11t0lhzppTxRaefddbFyCsZENuJ7tRyBAUiG55iW/ZzhMwCPBSgtztLNyKrYI8u1UHt6HGFndoRPC/nHOE/Fi/tIP1UHCwBXMndcFwLp1ceF+At+75e+QYT+yg2RY69EvlUK5nawdFd8MIZxIpgWmMFQwP6VtOAGMEAK5YFulA7aPTX2kdtjBZRQ2hDv24ZYhA3pmVLg=

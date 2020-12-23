@@ -10,7 +10,4 @@ script:
   - yarn build
   - node ./__selenium/basic-test.js
 addons:
-  browserstack:
-    username: emresakarya1
-    access_key:
-      secure: JpT8k4vhBRqGP/2vXAdUtx1tIYyTYj3a2+UoE43GzZSL/ko8EecQALBaBEGcEYwgOhzroZPrAI/J4N7zJtcDpxsQsPGJKVaymRzt0FQx9KT+WIVhDJAWlpzPJEFvnpsC3zDr/lyBcCC10iWkkV/dD4/DdWaw7O1Drn+3IywY5eeUAuAlRV6KnJBEvBaIslR94tRDwQHDsehDX2g7YBpE6gmkvhpkZkOXCd1gutGRlgVQxIURwdsHAeHwrrQsV468eQPHUxGwIDzLvb4HhyO/Lk9wCq60kfC1wetdENJTbxn3BpUx0dfhr4gzs1lJguF+jESjbEm32fO+GmmyT7lkH7VWKZbhoyELRnTpej/1ZKafHXWleMxU1WZSZ2uNG92bbJaK26nCoA9EhYNAZh/rGouslJgDqSQHeqv2ICVO3QX61fNl8Eew9/AAs8AiLQG+/VQ/oRngwkDW6KZ0JvoGjGnqUiOOTk6fqP7pnH6Kd8z+LOeAKqlutPmPVwykIHpydrRMTgNAhr8MmLX3RpkHRSsUE31KLl2nUUCmM6c4AKxr1tJc5ySIbeqWW1lLphBBf861CruhKU61VZZoOCrKrBqUvxWRdMcqmtkkIcIOtUVkyYFPZexu7Pd54i8LCcEaDoMDgHyggr/QByB+BcG4pIjuWZNEcNfqD+LHg77WOmY=
+  browserstack: true

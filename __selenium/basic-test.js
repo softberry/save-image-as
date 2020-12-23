@@ -1,17 +1,14 @@
-console.log(process.env);
 const webdriver = require("selenium-webdriver");
-const browserstackLocal = process.env.BROWSERSTACK_LOCAL;
-const browserstackLocalIdentifier = process.env.BROWSERSTACK_LOCAL_IDENTIFIER;
-// const dotenv = require("dotenv");
-// dotenv.config();
-// TODO: uninstall dotenv
 
-var browserstackURL = process.env.BS_URL;
+const dotenv = require("dotenv");
+dotenv.config();
+
+USERNAME = process.env.BROWSERSTACK_USERNAME;
+AUTOMATE_KEY = process.env.BROWSERSTACK_ACCESS_KEY;
+const browserstackURL = "https://" + USERNAME + ":" + AUTOMATE_KEY + "@hub-cloud.browserstack.com/wd/hub";
 
 // Input capabilities
 var capabilities = {
-  "browserstack.local": "true",
-  "browserstack.localIdentifier": browserstackLocalIdentifier,
   os: "Windows",
   os_version: "10",
   browserName: "Chrome",

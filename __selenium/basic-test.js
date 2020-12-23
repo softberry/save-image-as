@@ -1,4 +1,6 @@
 const webdriver = require("selenium-webdriver");
+const browserstackLocal = process.env.BROWSERSTACK_LOCAL;
+const browserstackLocalIdentifier = process.env.BROWSERSTACK_LOCAL_IDENTIFIER;
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -6,6 +8,8 @@ var browserstackURL = process.env.BS_URL;
 
 // Input capabilities
 var capabilities = {
+  local: true,
+  localIdentifier: browserstackLocalIdentifier,
   os: "Windows",
   os_version: "10",
   browserName: "Chrome",

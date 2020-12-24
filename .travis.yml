@@ -8,4 +8,4 @@ install:
   - yarn
 script:
   - yarn build
-  - node ./__selenium/basic-test.js
+  - yarn test

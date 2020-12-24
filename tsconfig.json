@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "module": "ES6",
+    "moduleResolution": "Node",
     "strict": true,
     "noImplicitReturns": true,
     "removeComments": true,
@@ -17,5 +18,5 @@
     }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules/*", "build", "dist", "docs"]
+  "exclude": ["node_modules/*", "build", "dist", "docs", "*.js"]
 }

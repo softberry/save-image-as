@@ -21,7 +21,7 @@ export declare class SaveImage {
     maxImageWidth: number;
     exportFormat: EExportFormat;
     exportQuality: EExportQuality;
-    constructor({ maxImageWidth, exportFormat, exportQuality }: ISaveImageOptions);
+    constructor({ maxImageWidth, exportFormat, exportQuality, }: ISaveImageOptions);
     private cleanUp;
     private imageLoaded;
     private imageData;

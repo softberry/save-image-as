@@ -1,18 +1,8 @@
-<!doctype html><html><head><meta charset="utf-8"/><title>Save Image As Preview</title><script defer="defer" src="save-image-as.js"></script></head><body><img id="result"/> <input type="file" accept=".jpg,.jpeg,.png,.tiff,.svg," id="imageFile"/><script>window.addEventListener("load", () => {
-        const file = document.getElementById("imageFile");
-        const maxImageWidth = 200;
-        const toBase64 = saveImageAs.JPG(maxImageWidth, 1);
-
-        file &&
-          file.addEventListener("change", e => {
-            toBase64
-              .onChange(e)
-              .then(base => {
-                console.log("done!");
-                document.getElementById("result").src = base;
-              })
-              .catch(err => {
-                console.log("error: ", err);
-              });
-          });
-      });</script></body></html>
+<!doctype html><html><head><meta charset="utf-8"/><title>Save Image As Preview</title><style>.container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .container > div {
+        width: 300px;
+      }</style><script defer="defer" src="save-image-as.js"></script></head><body><div class="container"></div><script src="../docs/mock.js"></script></body></html>

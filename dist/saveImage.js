@@ -14,7 +14,7 @@ export var ERejectReason;
     ERejectReason["NO_IMAGE_FILE_SELECTED"] = "NO_IMAGE_FILE_SELECTED";
 })(ERejectReason || (ERejectReason = {}));
 export class SaveImage {
-    constructor({ maxImageWidth = 200, exportFormat = EExportFormat.PNG, exportQuality = 0.7 }) {
+    constructor({ maxImageWidth = 200, exportFormat = EExportFormat.PNG, exportQuality = 0.7, }) {
         if (maxImageWidth < 0 || isNaN(maxImageWidth)) {
             throw new Error("`maxImageWidth` should be positive number");
         }
@@ -53,7 +53,6 @@ export class SaveImage {
                 this.cleanUp(img);
                 reject(ERejectReason.ABORTED);
             };
-            console.log(this.exportFormat, this.exportQuality);
             canvas.toBlob(blob => {
                 if (blob !== null) {
                     reader.readAsDataURL(blob);

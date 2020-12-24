@@ -54,12 +54,12 @@ const drivers = () => ({
 });
 
 //const mockFile = resolve(__dirname, "./color-palette.png");
-const getFileInfo = async (driver, mockFileName) => {
+const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
   try {
     const mockFile = resolve(__dirname, mockFileName);
     driver.get(testServerURL);
-    const imageFile = await driver.findElement(By.id("imageFile"));
-    const imageElement = await driver.findElement(By.id("result"));
+    const imageFile = await driver.findElement(By.id(inputFileId));
+    const imageElement = await driver.findElement(By.id(resultImgId));
     const isImageFileDisplayed = await imageFile.isDisplayed();
 
     if (!isImageFileDisplayed) {

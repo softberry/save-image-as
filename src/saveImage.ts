@@ -38,12 +38,20 @@ export class SaveImage {
    */
   exportQuality: EExportQuality;
 
-  constructor({ maxImageWidth = 200, exportFormat = EExportFormat.PNG, exportQuality = 0.7 }: ISaveImageOptions) {
+  constructor({
+    maxImageWidth = 200,
+    exportFormat = EExportFormat.PNG,
+    exportQuality = 0.7,
+  }: ISaveImageOptions) {
     if (maxImageWidth < 0 || isNaN(maxImageWidth)) {
       throw new Error("`maxImageWidth` should be positive number");
     }
     if (!Object.values(EExportFormat).includes(exportFormat)) {
-      throw new Error(`"exportFormat" must be one of: ${Object.values(EExportFormat).toString()}`);
+      throw new Error(
+        `"exportFormat" must be one of: ${Object.values(
+          EExportFormat
+        ).toString()}`
+      );
     }
     if (isNaN(exportQuality) || exportQuality < 0 || exportQuality > 1) {
       throw new Error("`exportQuality` must be between 0 and 1");
@@ -61,7 +69,8 @@ export class SaveImage {
     return new Promise((resolve, reject) => {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
-      const scaleRatio = this.maxImageWidth < img.width ? img.width / this.maxImageWidth : 1;
+      const scaleRatio =
+        this.maxImageWidth < img.width ? img.width / this.maxImageWidth : 1;
       canvas.width = img.width / scaleRatio;
       canvas.height = img.height / scaleRatio;
 
@@ -82,7 +91,7 @@ export class SaveImage {
         this.cleanUp(img);
         reject(ERejectReason.ABORTED);
       };
-      console.log(this.exportFormat, this.exportQuality);
+
       canvas.toBlob(
         blob => {
           if (blob !== null) {

@@ -14,10 +14,11 @@ describe("Should convert without error", () => {
       };
     });
   });
+  const driver = getDriverFor(drivers.windows10FirefoxLatest);
+  afterAll(driver.quit);
   tests.forEach(test => {
     test.forEach(item => {
       it(`Convert ${item.inputFileId} -> ${item.resultImgId}`, async () => {
-        const driver = getDriverFor(drivers.windows10FirefoxLatest);
         expect.assertions(2);
         const result = await getFileInfo(
           driver,
@@ -25,7 +26,7 @@ describe("Should convert without error", () => {
           item.inputFileId,
           item.resultImgId
         );
-        await driver.quit();
+
         expect(result.data.startsWith(item.data));
         expect(result.width).toEqual(200);
         expect(result.height).toEqual(150);

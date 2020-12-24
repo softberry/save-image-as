@@ -53,7 +53,6 @@ const drivers = () => ({
   windows10FirefoxLatest_2,
 });
 
-//const mockFile = resolve(__dirname, "./color-palette.png");
 const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
   try {
     const mockFile = resolve(__dirname, mockFileName);

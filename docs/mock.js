@@ -37,7 +37,7 @@ window.addEventListener("load", () => {
   ];
   const toBase64 = {
     Png: saveImageAs.PNG(maxImageWidth, 1),
-    Jpg: saveImageAs.JPG(maxImageWidth, 1),
+    Jpeg: saveImageAs.JPG(maxImageWidth, 1),
     Webp: saveImageAs.WEBP(maxImageWidth, 1),
   };
   for (var i = 0; i < formatMatrix.length; i++) {

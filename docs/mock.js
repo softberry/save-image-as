@@ -36,7 +36,7 @@ var maxImageWidth = 200;
 var elementsMatrix = [];
 
 window.addEventListener("load", function () {
-  const toBase64 = {
+  var toBase64 = {
     Png: saveImageAs.PNG(maxImageWidth, 1),
     Jpeg: saveImageAs.JPG(maxImageWidth, 1),
     Webp: saveImageAs.WEBP(maxImageWidth, 1),

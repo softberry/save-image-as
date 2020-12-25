@@ -13,7 +13,7 @@ describe("Windows 10 Firefox [latest - 2]", () => {
   const scopedDrivers = {
     Png: getDriverFor("PNG", driverCapabilities),
     Jpeg: getDriverFor("JPEG", driverCapabilities),
-    Webp: getDriverFor("JPEG", driverCapabilities),
+    Webp: getDriverFor("WEBP", driverCapabilities),
   };
   const testsCases = getTestCases(scopedDrivers);
 

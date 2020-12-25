@@ -13,6 +13,7 @@ describe("OS X Catalina Safari [13.1]", () => {
   const scopedDrivers = {
     Png: getDriverFor("PNG", driverCapabilities),
     Jpeg: getDriverFor("JPEG", driverCapabilities),
+    // Webp: getDriverFor("WEBP", driverCapabilities), WEBP is not supported on this Browser
   };
   const testsCases = getTestCases(scopedDrivers);
   afterAll(async () => {

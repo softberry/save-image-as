@@ -13,6 +13,8 @@ Get this package from npm:
 
 If you do not have a build routine (webpack, rollout etc.) simply include save-image-as script over an cdn in your html file for example : `<script src="https://unpkg.com/save-image-as@0.1.0/dist/save-image-as.js"></script>`.
 
+See Sample Code in [**CodeSandbox**](https://codesandbox.io/s/relaxed-kirch-jqzc0) and try it out.
+
 In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package like this:
 
 `import {PNG, /*JPG,WEBP*/} from "save-image-as"` then assign onChange method as your file input's onChange evant handler.
@@ -40,8 +42,6 @@ Then :
 
     const fileInput = document.getElementById("upload");
     fileInput.addEventListener("change",myCustomImageHandler);
-
-    // see a working example in public folder
 
 | Option          | Default | Description                                            |
 | --------------- | ------- | ------------------------------------------------------ |

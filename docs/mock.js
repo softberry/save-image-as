@@ -13,7 +13,6 @@ function createElements(source, target) {
   return { img: img, input: input };
 }
 function convertOnChange(fileInput, targetImg, toBase64) {
-  console.log(fileInput.id);
   fileInput &&
     fileInput.addEventListener("change", function (e) {
       toBase64

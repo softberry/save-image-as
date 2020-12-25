@@ -3,53 +3,17 @@ const { Builder, By } = require("selenium-webdriver");
 const { FileDetector } = require("selenium-webdriver/remote");
 
 const dotenv = require("dotenv");
-dotenv.config();
-const d = new Date();
-const testServerURL = "https://softberry.github.io/save-image-as/";
+const { capabilities } = require("./capabilities");
 
-const dateStr = `${d.getDay()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`;
+dotenv.config();
+
+const testServerURL = "https://softberry.github.io/save-image-as/";
 
 const USERNAME = process.env.BROWSERSTACK_USERNAME;
 const AUTOMATE_KEY = process.env.BROWSERSTACK_ACCESS_KEY;
 const browserstackURL = `https://${USERNAME}:${AUTOMATE_KEY}@hub-cloud.browserstack.com/wd/hub`;
 
 // Input capabilities
-const capabilities = {
-  // name: buildName, // test name
-  build: `Save Image As - Browser Test @  ${dateStr}`,
-  //   "browserstack.sendKeys": true,
-  "browserstack.selenium_version": "3.14.0",
-  "browserstack.debug": true,
-  "browserstack.networkLogs": true,
-  "browserstack.console": "errors",
-};
-
-const windows10FirefoxLatest = {
-  ...capabilities,
-  os: "Windows",
-  os_version: "10",
-  resolution: "1920x1080",
-  browserName: "Firefox",
-  browser_version: "latest",
-};
-
-const windows10FirefoxLatest_1 = {
-  ...windows10FirefoxLatest,
-  browser_version: "latest - 1",
-};
-
-const windows10FirefoxLatest_2 = {
-  ...windows10FirefoxLatest,
-  browser_version: "latest - 2",
-};
-
-const oSCatalinaSafari_13 = {
-  ...capabilities,
-  os: "OS X",
-  os_version: "Catalina",
-  browserName: "Safari",
-  browser_version: "13.1",
-};
 
 const getDriverFor = (testGroupName, driverCaps) => {
   const driver = new Builder()
@@ -63,12 +27,6 @@ const getDriverFor = (testGroupName, driverCaps) => {
   driver.setFileDetector(new FileDetector());
   return driver;
 };
-const drivers = () => ({
-  windows10FirefoxLatest,
-  windows10FirefoxLatest_1,
-  windows10FirefoxLatest_2,
-  oSCatalinaSafari_13,
-});
 
 const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
   try {
@@ -121,7 +79,7 @@ const getTestCases = scopedDrivers => {
   };
 };
 module.exports = {
-  drivers: drivers(),
+  capabilities: capabilities(),
   getFileInfo,
   getDriverFor,
   getTestCases,

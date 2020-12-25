@@ -2,14 +2,14 @@ import "core-js/shim";
 import "regenerator-runtime/runtime";
 
 const {
-  drivers,
+  capabilities,
   getFileInfo,
   getTestCases,
   getDriverFor,
 } = require("../__mocks__/drivers");
 
 describe("OS X Catalina Safari [13.1]", () => {
-  const driverCapabilities = drivers.oSCatalinaSafari_13;
+  const driverCapabilities = capabilities.oSCatalinaSafari_13;
   const scopedDrivers = {
     Png: getDriverFor("PNG", driverCapabilities),
     Jpeg: getDriverFor("JPEG", driverCapabilities),

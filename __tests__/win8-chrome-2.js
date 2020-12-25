@@ -9,7 +9,7 @@ const {
 } = require("../__mocks__/drivers");
 
 describe("Windows 10 Firefox [latest - 2]", () => {
-  const driverCapabilities = capabilities.windows10FirefoxLatest_2;
+  const driverCapabilities = capabilities.windows8ChromeLatest_2;
   const scopedDrivers = {
     Png: getDriverFor("PNG", driverCapabilities),
     Jpeg: getDriverFor("JPEG", driverCapabilities),

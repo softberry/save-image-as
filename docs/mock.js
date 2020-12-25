@@ -13,16 +13,17 @@ function createElements(source, target) {
   return { img: img, input: input };
 }
 function convertOnChange(fileInput, targetImg, toBase64) {
+  console.log(fileInput.id);
   fileInput &&
-    fileInput.addEventListener("change", e => {
+    fileInput.addEventListener("change", function (e) {
       toBase64
         .onChange(e)
-        .then(base => {
+        .then(function (base) {
           console.log("done!");
           targetImg.src = base;
           targetImg.title = base.slice(0, 32);
         })
-        .catch(err => {
+        .catch(function (err) {
           console.log("error: ", err);
         });
     });
@@ -34,25 +35,31 @@ var formatMatrix = [
 ];
 var maxImageWidth = 200;
 var elementsMatrix = [];
-const toBase64 = {
-  Png: saveImageAs.PNG(maxImageWidth, 1),
-  Jpeg: saveImageAs.JPG(maxImageWidth, 1),
-  Webp: saveImageAs.WEBP(maxImageWidth, 1),
-};
-for (var i = 0; i < formatMatrix.length; i++) {
-  var src = formatMatrix[i].src;
-  var targets = formatMatrix[i].targets;
-  for (var t = 0; t < targets.length; t++) {
-    var target = targets[t];
-    var elements = createElements(
-      "imageFile" + src + "To" + target,
-      "result" + src + "To" + target
-    );
-    elementsMatrix.push([elements.input, elements.img, toBase64[target]]);
+
+window.addEventListener("load", function () {
+  const toBase64 = {
+    Png: saveImageAs.PNG(maxImageWidth, 1),
+    Jpeg: saveImageAs.JPG(maxImageWidth, 1),
+    Webp: saveImageAs.WEBP(maxImageWidth, 1),
+  };
+
+  for (var i = 0; i < formatMatrix.length; i++) {
+    var src = formatMatrix[i].src;
+    var targets = formatMatrix[i].targets;
+    for (var t = 0; t < targets.length; t++) {
+      var target = targets[t];
+      var elements = createElements(
+        "imageFile" + src + "To" + target,
+        "result" + src + "To" + target
+      );
+      elementsMatrix.push([elements.input, elements.img, toBase64[target]]);
+    }
   }
-}
-window.addEventListener("load", () => {
+});
+window.addEventListener("load", function () {
   for (var i = 0; i < elementsMatrix.length; i++) {
-    convertOnChange(elementsMatrix[0], elementsMatrix[1], elementsMatrix[2]);
+    var el = elementsMatrix[i];
+
+    convertOnChange(el[0], el[1], el[2]);
   }
 });

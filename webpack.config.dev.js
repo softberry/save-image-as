@@ -39,6 +39,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: join(publicPath, "index.html"),
+      inject: "head",
       title: "Save Image As",
     }),
   ],

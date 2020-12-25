@@ -11,7 +11,7 @@ const dateStr = `${d.getDay()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()
 const USERNAME = process.env.BROWSERSTACK_USERNAME;
 const AUTOMATE_KEY = process.env.BROWSERSTACK_ACCESS_KEY;
 const browserstackURL = `https://${USERNAME}:${AUTOMATE_KEY}@hub-cloud.browserstack.com/wd/hub`;
-const testServerURL = "https://softberry.github.io/save-image-as/";
+
 // Input capabilities
 const capabilities = {
   os_version: "10",
@@ -59,13 +59,17 @@ const drivers = () => ({
 const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
   try {
     const mockFile = resolve(__dirname, mockFileName);
-    driver.get(testServerURL);
+
     const imageFile = await driver.findElement(By.id(inputFileId));
     const imageElement = await driver.findElement(By.id(resultImgId));
     const isImageFileDisplayed = await imageFile.isDisplayed();
 
     if (!isImageFileDisplayed) {
-      throw new Error("FILE_INPUT_NOT_DISPLAYED");
+      return {
+        data: "FILE_INPUT_NOT_DISPLAYED",
+        width: -1,
+        height: -1,
+      };
     }
     await imageFile.sendKeys(mockFile);
     const data = await imageElement.getAttribute("src");
@@ -76,9 +80,8 @@ const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
       ...rect,
     };
   } catch (err) {
-    console.log(err);
     return {
-      data: "",
+      data: err,
       width: -1,
       height: -1,
     };

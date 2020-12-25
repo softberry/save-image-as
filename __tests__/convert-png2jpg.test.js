@@ -2,6 +2,7 @@ import "core-js/shim";
 import "regenerator-runtime/runtime";
 
 const { drivers, getFileInfo, getDriverFor } = require("../__mocks__/drivers");
+const testServerURL = "https://softberry.github.io/save-image-as/";
 
 describe("Should convert without error", () => {
   const scopedDrivers = {
@@ -9,10 +10,12 @@ describe("Should convert without error", () => {
     Jpeg: getDriverFor("JPEG", drivers.windows10FirefoxLatest),
     Webp: getDriverFor("WEBP", drivers.windows10FirefoxLatest),
   };
-  const tests = ["Png", "Jpeg", "Webp"].map((src, i, array) => {
+  const testsCases = ["Png", "Jpeg", "Webp"].map((src, i, array) => {
     return array.map(target => {
+      const driver = scopedDrivers[src];
+      driver.get(testServerURL);
       return {
-        driver: scopedDrivers[src],
+        driver,
         mockFile: `../__mocks__/color-palette.${src.toLowerCase()}`,
         inputFileId: `imageFile${src}To${target}`,
         resultImgId: `result${src}To${target}`,
@@ -27,8 +30,8 @@ describe("Should convert without error", () => {
     await scopedDrivers.Webp.quit();
   });
 
-  tests.forEach(tester => {
-    tester.forEach(item => {
+  testsCases.forEach(testeCase => {
+    testeCase.forEach(item => {
       it(`Convert ${item.inputFileId} -> ${item.resultImgId}`, async () => {
         expect.assertions(2);
         const result = await getFileInfo(

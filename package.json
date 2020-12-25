@@ -42,7 +42,7 @@
     "webpack-dev-server": "^4.0.0-beta.0"
   },
   "jest": {
-    "testTimeout": 30000
+    "testTimeout": 60000
   },
   "husky": {
     "hooks": {

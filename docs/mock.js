@@ -27,29 +27,32 @@ function convertOnChange(fileInput, targetImg, toBase64) {
         });
     });
 }
-
+var formatMatrix = [
+  { src: "Png", targets: ["Png", "Jpeg", "Webp"] },
+  { src: "Jpeg", targets: ["Png", "Jpeg", "Webp"] },
+  { src: "Webp", targets: ["Png", "Jpeg", "Webp"] },
+];
+var maxImageWidth = 200;
+var elementsMatrix = [];
+const toBase64 = {
+  Png: saveImageAs.PNG(maxImageWidth, 1),
+  Jpeg: saveImageAs.JPG(maxImageWidth, 1),
+  Webp: saveImageAs.WEBP(maxImageWidth, 1),
+};
+for (var i = 0; i < formatMatrix.length; i++) {
+  var src = formatMatrix[i].src;
+  var targets = formatMatrix[i].targets;
+  for (var t = 0; t < targets.length; t++) {
+    var target = targets[t];
+    var elements = createElements(
+      "imageFile" + src + "To" + target,
+      "result" + src + "To" + target
+    );
+    elementsMatrix.push([elements.input, elements.img, toBase64[target]]);
+  }
+}
 window.addEventListener("load", () => {
-  var maxImageWidth = 200;
-  var formatMatrix = [
-    { src: "Png", targets: ["Png", "Jpeg", "Webp"] },
-    { src: "Jpeg", targets: ["Png", "Jpeg", "Webp"] },
-    { src: "Webp", targets: ["Png", "Jpeg", "Webp"] },
-  ];
-  const toBase64 = {
-    Png: saveImageAs.PNG(maxImageWidth, 1),
-    Jpeg: saveImageAs.JPG(maxImageWidth, 1),
-    Webp: saveImageAs.WEBP(maxImageWidth, 1),
-  };
-  for (var i = 0; i < formatMatrix.length; i++) {
-    var src = formatMatrix[i].src;
-    var targets = formatMatrix[i].targets;
-    for (var t = 0; t < targets.length; t++) {
-      var target = targets[t];
-      var elements = createElements(
-        "imageFile" + src + "To" + target,
-        "result" + src + "To" + target
-      );
-      convertOnChange(elements.input, elements.img, toBase64[target]);
-    }
+  for (var i = 0; i < elementsMatrix.length; i++) {
+    convertOnChange(elementsMatrix[0], elementsMatrix[1], elementsMatrix[2]);
   }
 });

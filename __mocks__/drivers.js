@@ -6,8 +6,8 @@ const dotenv = require("dotenv");
 dotenv.config();
 const d = new Date();
 
-const dateStr = `${d.getDay()}/${d.getMonth()}/${d.getFullYear()}`;
-const buildName = `Save Image As - Browser Test ${dateStr}`;
+const dateStr = `${d.getDay()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`;
+
 const USERNAME = process.env.BROWSERSTACK_USERNAME;
 const AUTOMATE_KEY = process.env.BROWSERSTACK_ACCESS_KEY;
 const browserstackURL = `https://${USERNAME}:${AUTOMATE_KEY}@hub-cloud.browserstack.com/wd/hub`;
@@ -19,7 +19,7 @@ const capabilities = {
   browserName: "Firefox",
   browser_version: "latest",
   os: "Windows",
-  name: buildName, // test name
+  // name: buildName, // test name
   build: `Save Image As - Browser Test @  ${dateStr}`,
   //   "browserstack.sendKeys": true,
   "browserstack.debug": true,
@@ -38,11 +38,14 @@ const windows10FirefoxLatest_2 = {
   browser_version: "latest - 2",
 };
 
-const getDriverFor = driverCaps => {
+const getDriverFor = (testGroupName, driverCaps) => {
   const driver = new Builder()
     .forBrowser("chrome")
     .usingServer(browserstackURL)
-    .withCapabilities(driverCaps)
+    .withCapabilities({
+      ...driverCaps,
+      name: `Save Image As - Browser Test ${testGroupName}`,
+    })
     .build();
   driver.setFileDetector(new FileDetector());
   return driver;
@@ -73,7 +76,12 @@ const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
       ...rect,
     };
   } catch (err) {
-    return err;
+    console.log(err);
+    return {
+      data: "",
+      width: -1,
+      height: -1,
+    };
   }
 };
 

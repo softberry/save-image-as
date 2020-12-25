@@ -1,7 +1,12 @@
 import "core-js/shim";
 import "regenerator-runtime/runtime";
 
-const { drivers, getFileInfo, getTestCases } = require("../__mocks__/drivers");
+const {
+  drivers,
+  getFileInfo,
+  getTestCases,
+  getDriverFor,
+} = require("../__mocks__/drivers");
 
 describe("Windows 10 Firefox [latest - 2]", () => {
   const driverCapabilities = drivers.windows10FirefoxLatest_2;

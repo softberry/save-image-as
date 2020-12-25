@@ -11,3 +11,5 @@ script:
   - yarn win10-firefox-2
   - yarn osCatalinaSafari-13
   - yarn win8-chrome-2
+  - yarn win8.1-edge-2
+  - yarn win7-IE11

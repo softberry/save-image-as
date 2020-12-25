@@ -8,19 +8,19 @@ const {
   getDriverFor,
 } = require("../__mocks__/drivers");
 
-describe("Windows 8 Chrome [latest - 2]", () => {
-  const driverCapabilities = capabilities.windows8ChromeLatest_2;
+describe("Windows 7 IE 11", () => {
+  const driverCapabilities = capabilities.windows7IE11;
   const scopedDrivers = {
     Png: getDriverFor("PNG", driverCapabilities),
     Jpeg: getDriverFor("JPEG", driverCapabilities),
-    Webp: getDriverFor("WEBP", driverCapabilities),
+    // Webp: getDriverFor("WEBP", driverCapabilities), // not supported on IE11
   };
   const testsCases = getTestCases(scopedDrivers);
 
   afterAll(async () => {
     await testsCases.drivers.Png.quit();
     await testsCases.drivers.Jpeg.quit();
-    await testsCases.drivers.Webp.quit();
+    // await testsCases.drivers.Webp.quit();
   });
 
   testsCases.list.forEach(testeCase => {

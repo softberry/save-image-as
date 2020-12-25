@@ -8,8 +8,8 @@ const {
   getDriverFor,
 } = require("../__mocks__/drivers");
 
-describe("Windows 8 Chrome [latest - 2]", () => {
-  const driverCapabilities = capabilities.windows8ChromeLatest_2;
+describe("Windows 8.1 Edge [latest - 2]", () => {
+  const driverCapabilities = capabilities.windows81EdgeLatest_2;
   const scopedDrivers = {
     Png: getDriverFor("PNG", driverCapabilities),
     Jpeg: getDriverFor("JPEG", driverCapabilities),

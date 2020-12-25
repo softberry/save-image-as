@@ -8,7 +8,7 @@
     "preserveConstEnums": true,
     "sourceMap": true,
     "declaration": true,
-    "target": "ES2015",
+    "target": "ES5",
     "outDir": "dist",
     "rootDir": "./src",
     "baseUrl": ".",

@@ -45,6 +45,22 @@ const windows8ChromeLatest_2 = {
   browserName: "Chrome",
   browser_version: "latest - 2",
 };
+const windows81EdgeLatest_2 = {
+  ...basicCapabilities,
+  os: "Windows",
+  os_version: "8.1",
+  browserName: "Edge",
+  browser_version: "latest - 2",
+};
+const windows7IE11 = {
+  ...basicCapabilities,
+  os: "Windows",
+  os_version: "7",
+  browserName: "IE",
+  browser_version: "11.0",
+  "browserstack.sendKeys": true,
+  "browserstack.selenium_version": "3.1.0",
+};
 
 const capabilities = () => ({
   windows10FirefoxLatest,
@@ -52,6 +68,8 @@ const capabilities = () => ({
   windows10FirefoxLatest_2,
   oSCatalinaSafari_13,
   windows8ChromeLatest_2,
+  windows81EdgeLatest_2,
+  windows7IE11,
 });
 
 module.exports.capabilities = capabilities;

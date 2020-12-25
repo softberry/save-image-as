@@ -12,7 +12,16 @@ module.exports = {
     path: buildPath,
     filename: "save-image-as.js",
     library: "saveImageAs",
-    libraryTarget: "global",
+    libraryTarget: "window",
+    environment: {
+      arrowFunction: false,
+      bigIntLiteral: false,
+      const: false,
+      destructuring: false,
+      dynamicImport: false,
+      forOf: false,
+      module: false,
+    },
   },
 
   module: {
@@ -26,6 +35,7 @@ module.exports = {
         test: /\.ts$/,
         exclude: /node_modules/,
         loader: "ts-loader",
+        options: { configFile: "tsconfig-es5.json" },
       },
     ],
   },

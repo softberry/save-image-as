@@ -1,11 +1,13 @@
 {
   "name": "save-image-as",
   "version": "0.2.0",
-  "description": "Convert any image to png in browser",
+  "description": "Convert and resize any image to another format in browser. ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
+    "win10-firefox-2": "jest win10-firefox-2.js",
+    "osCatalinaSafari-13": "jest osCatalinaSafari-13.js",
     "serve": "webpack serve -c webpack.config.dev.js",
     "build": "rm -rf dist/ && npx tsc && webpack -c webpack.config.prod.js",
     "linter": "eslint \"**/*{.tsx,.ts}\" --fix"
@@ -42,7 +44,7 @@
     "webpack-dev-server": "^4.0.0-beta.0"
   },
   "jest": {
-    "testTimeout": 60000
+    "testTimeout": 90000
   },
   "husky": {
     "hooks": {

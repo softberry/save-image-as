@@ -8,4 +8,5 @@ install:
   - yarn
 script:
   - yarn build
-  - yarn test
+  - yarn yarn win10-firefox-2
+  - yarn yarn osCatalinaSafari-13

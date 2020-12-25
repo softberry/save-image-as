@@ -5,6 +5,7 @@ const { FileDetector } = require("selenium-webdriver/remote");
 const dotenv = require("dotenv");
 dotenv.config();
 const d = new Date();
+const testServerURL = "https://softberry.github.io/save-image-as/";
 
 const dateStr = `${d.getDay()}/${d.getMonth()}/${d.getFullYear()} ${d.getHours()}:${d.getMinutes()}`;
 
@@ -14,28 +15,40 @@ const browserstackURL = `https://${USERNAME}:${AUTOMATE_KEY}@hub-cloud.browserst
 
 // Input capabilities
 const capabilities = {
+  // name: buildName, // test name
+  build: `Save Image As - Browser Test @  ${dateStr}`,
+  //   "browserstack.sendKeys": true,
+  "browserstack.selenium_version": "3.14.0",
+  "browserstack.debug": true,
+  "browserstack.networkLogs": true,
+  "browserstack.console": "errors",
+};
+
+const windows10FirefoxLatest = {
+  ...capabilities,
+  os: "Windows",
   os_version: "10",
   resolution: "1920x1080",
   browserName: "Firefox",
   browser_version: "latest",
-  os: "Windows",
-  // name: buildName, // test name
-  build: `Save Image As - Browser Test @  ${dateStr}`,
-  //   "browserstack.sendKeys": true,
-  "browserstack.debug": true,
-  "browserstack.networkLogs": true,
 };
 
-const windows10FirefoxLatest = { ...capabilities };
-
 const windows10FirefoxLatest_1 = {
-  ...capabilities,
+  ...windows10FirefoxLatest,
   browser_version: "latest - 1",
 };
 
 const windows10FirefoxLatest_2 = {
-  ...capabilities,
+  ...windows10FirefoxLatest,
   browser_version: "latest - 2",
+};
+
+const oSCatalinaSafari_13 = {
+  ...capabilities,
+  os: "OS X",
+  os_version: "Catalina",
+  browserName: "Safari",
+  browser_version: "13.1",
 };
 
 const getDriverFor = (testGroupName, driverCaps) => {
@@ -54,6 +67,7 @@ const drivers = () => ({
   windows10FirefoxLatest,
   windows10FirefoxLatest_1,
   windows10FirefoxLatest_2,
+  oSCatalinaSafari_13,
 });
 
 const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
@@ -87,9 +101,28 @@ const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
     };
   }
 };
-
+const getTestCases = scopedDrivers => {
+  const testsCases = Object.keys(scopedDrivers).map((src, i, array) => {
+    return array.map(target => {
+      const driver = scopedDrivers[src];
+      driver.get(testServerURL);
+      return {
+        driver,
+        mockFile: `../__mocks__/color-palette.${src.toLowerCase()}`,
+        inputFileId: `imageFile${src}To${target}`,
+        resultImgId: `result${src}To${target}`,
+        data: `data:image/${src.toLowerCase()};base64`,
+      };
+    });
+  });
+  return {
+    drivers: scopedDrivers,
+    list: testsCases,
+  };
+};
 module.exports = {
   drivers: drivers(),
   getFileInfo,
   getDriverFor,
+  getTestCases,
 };

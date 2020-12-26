@@ -58,3 +58,15 @@ Then :
 | `IMAGE_COULD_NOT_LOADED`    | Selected image could not load. Maybe a network error or disk error. |
 | `FILE_HAS_NO_READIBLE_DATA` | Selected file has no readible content.                              |
 | `NO_IMAGE_FILE_SELECTED`    | Trying to transfer befor selecting an image file.                   |
+
+## Browser Compatibility:
+
+### IE 11
+
+As it equires polyfills to use `Object.values`, `Promise API` these should be manually added. Please not this is not yet fully tested.
+
+### Chrome, Firefox, Safari, Edge
+
+Latest 2 versions are tested.
+
+**Please note `webp` image format is not Supported on Safari / OS X older than Big Sur **

@@ -4,6 +4,8 @@ const { FileDetector } = require("selenium-webdriver/remote");
 
 const dotenv = require("dotenv");
 const { capabilities } = require("./capabilities");
+const { strict } = require("assert");
+const { stringLiteral } = require("@babel/types");
 
 dotenv.config();
 
@@ -36,17 +38,15 @@ const getFileInfo = async (driver, mockFileName, inputFileId, resultImgId) => {
     const imageElement = await driver.findElement(By.id(resultImgId));
     const isImageFileDisplayed = await imageFile.isDisplayed();
 
-    if (!isImageFileDisplayed) {
-      return {
-        data: "FILE_INPUT_NOT_DISPLAYED",
-        width: -1,
-        height: -1,
-      };
-    }
+    if (!imageFile) throw Error("FILE_INPUT_NOT_FOUNT");
+    if (!imageElement) throw Error("IMG_ELEMENT_NOT_FOUNT");
+    if (!isImageFileDisplayed) throw Error("FILE_INPUT_NOT_DISPLAYED");
+
     await imageFile.sendKeys(mockFile);
     const data = await imageElement.getAttribute("src");
+    if (typeof data !== "string") throw Error("IMG_ELEMENT_SRC_NOT_AVAILABLE");
     const rect = await imageElement.getRect();
-
+    if (typeof rect === undefined) throw Error("IMG_ELEMENT_RECT_UNDEFINED");
     return {
       data,
       ...rect,

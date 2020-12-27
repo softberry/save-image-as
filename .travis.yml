@@ -8,7 +8,7 @@ install:
   - yarn
 script:
   - yarn build
-  - yarn osCatalinaSafari-13
-  - yarn win10-firefox-2
-  - yarn win8-chrome-2
-  - yarn win8.1-edge-2
+  - yarn safari
+  - yarn firefox
+  - yarn chrome
+  - yarn edge

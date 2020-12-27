@@ -22,7 +22,7 @@ describe("Firefox on OSX/Windows  ", () => {
     done();
   });
 
-  it("Firefox Latest - 2 On OS X Catalina : Should convert [Png,Jpeg,Webp] => [Png,Jpg,Webp]  without errors", () => {
+  it("Firefox Latest - 2 On OS X Catalina : Should convert [Png,Jpeg] => [Png,Jpg]  without errors", () => {
     return driverCatalina.get(testServerURL).then(() => {
       const { JPEG, PNG } = fileFormats;
       const cases = [
@@ -42,7 +42,7 @@ describe("Firefox on OSX/Windows  ", () => {
     });
   });
 
-  it("Firefox Latest - 2 On Windows 10 : Should convert [Png,Jpeg,Webp] => [Png,Jpg,Webp]  without errors", () => {
+  it("Firefox Latest - 2 On Windows 10 : Should convert [Png,Jpeg] => [Png,Jpg]  without errors", () => {
     return driverWindows10.get(testServerURL).then(() => {
       const { JPEG, PNG } = fileFormats;
       const cases = [
@@ -61,7 +61,7 @@ describe("Firefox on OSX/Windows  ", () => {
       });
     });
   });
-  it("Firefox Latest - 2 On Windows 7 : Should convert [Png,Jpeg,Webp] => [Png,Jpg,Webp]  without errors", () => {
+  it("Firefox Latest - 2 On Windows 7 : Should convert [Png,Jpeg] => [Png,Jpg]  without errors", () => {
     return driverWindows7.get(testServerURL).then(() => {
       const { JPEG, PNG } = fileFormats;
       const cases = [

@@ -6,10 +6,10 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "jest",
-    "win10-firefox-2": "jest win10-firefox-2.js",
-    "osCatalinaSafari-13": "jest osCatalinaSafari-13.js",
-    "win8-chrome-2": "jest win8-chrome-2.js",
-    "win8.1-edge-2": "jest win8.1-edge-2.js",
+    "firefox": "jest firefox.js",
+    "chrome": "jest chrome.js",
+    "edge": "jest edge.js",
+    "safari": "jest safari.js",
     "serve": "webpack serve -c webpack.config.dev.js",
     "build": "rm -rf dist/ && npx tsc && webpack -c webpack.config.prod.js",
     "linter": "eslint \"**/*{.tsx,.ts}\" --fix"

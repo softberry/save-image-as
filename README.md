@@ -16,7 +16,7 @@ If you do not have a build routine (webpack, rollout etc.) simply include save-i
 See Sample Codes:
 
 - [**Sample Vanilla Code**](https://codesandbox.io/s/save-image-as-jqzc0)
-- [**Sample ReactJS Code**](https://codesandbox.io/s/save-image-as-react-jqzc0)
+- [**Sample ReactJS Code**](https://codesandbox.io/s/save-image-as-react-x48uy)
 
 In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package like this:
 

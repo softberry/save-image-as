@@ -48,6 +48,7 @@ const oSBigSurSafari_14 = {
   os_version: "Big Sur",
   browserName: "Safari",
   browser_version: "14.0",
+  "browserstack.selenium_version": "3.14.0",
 };
 // Chrome
 const windows10Chrome = {

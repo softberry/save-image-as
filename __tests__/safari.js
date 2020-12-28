@@ -35,7 +35,7 @@ describe("Safari on OSX  ", () => {
     });
   });
   // Unfortunately safari on BigSur also do not support WEBP, so it's excluded from tests
-  it("Safari 14 on OSX BigSUr : Should convert [Png,Jpeg,Webp] => [Png,Jpg,Webp]  without errors", () => {
+  it("Safari 14 on OSX BigSUr : Should convert [Png,Jpeg] => [Png,Jpg]  without errors", () => {
     return driverBigSur.get(testServerURL).then(() => {
       const { JPEG, PNG } = fileFormats;
       const cases = [

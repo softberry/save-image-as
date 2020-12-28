@@ -13,7 +13,10 @@ Get this package from npm:
 
 If you do not have a build routine (webpack, rollout etc.) simply include save-image-as script over an cdn in your html file for example : `<script src="https://unpkg.com/save-image-as@latest/dist/save-image-as.js"></script>`.
 
-See Sample Code in [**CodeSandbox**](https://codesandbox.io/s/relaxed-kirch-jqzc0) and try it out.
+See Sample Codes:
+
+- [**Sample Vanilla Code**](https://codesandbox.io/s/save-image-as-jqzc0)
+- [**Sample ReactJS Code**](https://codesandbox.io/s/save-image-as-reactjqzc0)
 
 In all JavaScript frame works (ReactJS, Angular, Vue ,etc) import this package like this:
 

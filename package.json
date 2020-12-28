@@ -17,10 +17,21 @@
   "keywords": [
     "convert image",
     "reformat image",
+    "resize image",
     "Browser"
   ],
-  "author": "Emre Sakarya https://github.com/softberry",
+  "author": {
+    "name": "Emre Sakarya",
+    "url": "https://emresakarya.com"
+  },
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/softberry/save-image-as"
+  },
+  "bugs": {
+    "url": "https://github.com/softberry/save-image-as/issues"
+  },
   "devDependencies": {
     "@babel/parser": "^7.12.11",
     "@babel/polyfill": "^7.12.1",

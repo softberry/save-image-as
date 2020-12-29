@@ -37,7 +37,7 @@ Then :
     function myCustomImageHandler(event){
         toBase64.onChange(event)
         .then(data=>{
-            // Use your date as you like
+            // Use your base64 formatted data as you like
         })
     }
 

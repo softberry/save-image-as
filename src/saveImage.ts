@@ -32,10 +32,6 @@ export enum EExportDataType {
    * readAsDataURL
    */
   DATA_URL,
-  /**
-   * readAsText
-   */
-  TEXT,
 }
 export interface ISaveImageOptions {
   maxImageWidth: number;
@@ -89,7 +85,9 @@ export class SaveImage {
     document.body.removeChild(img);
   }
 
-  private imageLoaded(img: HTMLImageElement): Promise<string> {
+  private imageLoaded(
+    img: HTMLImageElement
+  ): Promise<string | ArrayBuffer | null> {
     return new Promise((resolve, reject) => {
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
@@ -105,7 +103,7 @@ export class SaveImage {
       reader.onloadend = (): void => {
         const { result } = reader;
         this.cleanUp(img);
-        resolve(result?.toString() || "");
+        resolve(result);
       };
       reader.onerror = (): void => {
         this.cleanUp(img);
@@ -119,7 +117,20 @@ export class SaveImage {
       canvas.toBlob(
         blob => {
           if (blob !== null) {
-            reader.readAsDataURL(blob);
+            switch (this.exportDataType) {
+              case EExportDataType.ARRAY_BUFFER:
+                reader.readAsArrayBuffer(blob);
+                break;
+              case EExportDataType.BINARY_STRING:
+                reader.readAsBinaryString(blob);
+                break;
+              case EExportDataType.DATA_URL:
+                reader.readAsDataURL(blob);
+                break;
+              default:
+                reader.readAsDataURL(blob);
+                break;
+            }
           } else {
             this.cleanUp(img);
             reject(ERejectReason.EMPTY_TRANSFER);
@@ -130,7 +141,9 @@ export class SaveImage {
       );
     });
   }
-  private imageData(data: string): Promise<string> {
+  private imageData(
+    data: string | ArrayBuffer
+  ): Promise<string | ArrayBuffer | null> {
     return new Promise((resolve, reject) => {
       const img = document.createElement("img");
       document.body.appendChild(img);
@@ -144,11 +157,11 @@ export class SaveImage {
         reject(ERejectReason.IMAGE_COULD_NOT_LOADED);
         this.cleanUp(img);
       });
-      img.src = data;
+      img.src = data.toString();
     });
   }
 
-  public onChange(e: Event): Promise<string> {
+  public onChange(e: Event): Promise<string | ArrayBuffer | null> {
     const el = e.target as HTMLInputElement;
     return new Promise((resolve, reject) => {
       if (el?.files && el.files.length > 0) {
@@ -157,28 +170,12 @@ export class SaveImage {
           const data = readerEvent.target?.result;
 
           if (data) {
-            resolve(this.imageData(data.toString()));
+            resolve(this.imageData(data));
           } else {
             reject(ERejectReason.FILE_HAS_NO_READIBLE_DATA);
           }
         };
-        switch (this.exportDataType) {
-          case EExportDataType.ARRAY_BUFFER:
-            reader.readAsArrayBuffer(el.files[0]);
-            break;
-          case EExportDataType.BINARY_STRING:
-            reader.readAsBinaryString(el.files[0]);
-            break;
-          case EExportDataType.TEXT:
-            reader.readAsText(el.files[0]);
-            break;
-          case EExportDataType.DATA_URL:
-            reader.readAsDataURL(el.files[0]);
-            break;
-          default:
-            reader.readAsDataURL(el.files[0]);
-            break;
-        }
+        reader.readAsDataURL(el.files[0]);
       } else {
         reject(ERejectReason.NO_IMAGE_FILE_SELECTED);
       }

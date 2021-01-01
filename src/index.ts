@@ -7,37 +7,37 @@ import {
 export const PNG = (
   maxWidth: number,
   quality: EExportQuality,
-  exportData: EExportDataType
+  exportDataAs: EExportDataType
 ): SaveImage => {
   return new SaveImage({
     maxImageWidth: maxWidth,
     exportFormat: EExportFormat.PNG,
     exportQuality: quality,
-    exportDataType: exportData,
+    exportDataType: exportDataAs,
   });
 };
 export const JPG = (
   maxWidth: number,
   quality: EExportQuality,
-  exportData: EExportDataType
+  exportDataAs: EExportDataType
 ): SaveImage => {
   return new SaveImage({
     maxImageWidth: maxWidth,
     exportFormat: EExportFormat.JPG,
     exportQuality: quality,
-    exportDataType: exportData,
+    exportDataType: exportDataAs,
   });
 };
 export const WEBP = (
   maxWidth: number,
   quality: EExportQuality,
-  exportData: EExportDataType
+  exportDataAs: EExportDataType
 ): SaveImage => {
   return new SaveImage({
     maxImageWidth: maxWidth,
     exportFormat: EExportFormat.WEBP,
     exportQuality: quality,
-    exportDataType: exportData,
+    exportDataType: exportDataAs,
   });
 };
 

@@ -1,26 +1,26 @@
 import { EExportFormat, SaveImage, } from "./saveImage";
-export const PNG = (maxWidth, quality, exportData) => {
+export const PNG = (maxWidth, quality, exportDataAs) => {
     return new SaveImage({
         maxImageWidth: maxWidth,
         exportFormat: EExportFormat.PNG,
         exportQuality: quality,
-        exportDataType: exportData,
+        exportDataType: exportDataAs,
     });
 };
-export const JPG = (maxWidth, quality, exportData) => {
+export const JPG = (maxWidth, quality, exportDataAs) => {
     return new SaveImage({
         maxImageWidth: maxWidth,
         exportFormat: EExportFormat.JPG,
         exportQuality: quality,
-        exportDataType: exportData,
+        exportDataType: exportDataAs,
     });
 };
-export const WEBP = (maxWidth, quality, exportData) => {
+export const WEBP = (maxWidth, quality, exportDataAs) => {
     return new SaveImage({
         maxImageWidth: maxWidth,
         exportFormat: EExportFormat.WEBP,
         exportQuality: quality,
-        exportDataType: exportData,
+        exportDataType: exportDataAs,
     });
 };
 export const SaveImageAs = SaveImage;

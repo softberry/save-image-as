@@ -31,7 +31,6 @@ Then :
     const toArrayBuffer = saveImageAs.PNG(200, .5,0);
     const toBinary = saveImageAs.PNG(200, .5,1);
     const toBase64 = saveImageAs.PNG(200, .5,2);
-    const toText = saveImageAs.PNG(200, .5,3);
 
 2- **Create Custom handler for using image data**
 

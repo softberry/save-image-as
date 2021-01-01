@@ -12,16 +12,24 @@ export declare enum ERejectReason {
     FILE_HAS_NO_READIBLE_DATA = "FILE_HAS_NO_READIBLE_DATA",
     NO_IMAGE_FILE_SELECTED = "NO_IMAGE_FILE_SELECTED"
 }
+export declare enum EExportDataType {
+    ARRAY_BUFFER = 0,
+    BINARY_STRING = 1,
+    DATA_URL = 2,
+    TEXT = 3
+}
 export interface ISaveImageOptions {
     maxImageWidth: number;
     exportFormat: EExportFormat;
     exportQuality: number;
+    exportDataType: EExportDataType;
 }
 export declare class SaveImage {
     maxImageWidth: number;
     exportFormat: EExportFormat;
     exportQuality: EExportQuality;
-    constructor({ maxImageWidth, exportFormat, exportQuality, }: ISaveImageOptions);
+    exportDataType: EExportDataType;
+    constructor({ maxImageWidth, exportFormat, exportQuality, exportDataType, }: ISaveImageOptions);
     private cleanUp;
     private imageLoaded;
     private imageData;

@@ -18,7 +18,6 @@ export var EExportDataType;
     EExportDataType[EExportDataType["ARRAY_BUFFER"] = 0] = "ARRAY_BUFFER";
     EExportDataType[EExportDataType["BINARY_STRING"] = 1] = "BINARY_STRING";
     EExportDataType[EExportDataType["DATA_URL"] = 2] = "DATA_URL";
-    EExportDataType[EExportDataType["TEXT"] = 3] = "TEXT";
 })(EExportDataType || (EExportDataType = {}));
 export class SaveImage {
     constructor({ maxImageWidth = 200, exportFormat = EExportFormat.PNG, exportQuality = 0.7, exportDataType = EExportDataType.DATA_URL, }) {
@@ -51,7 +50,7 @@ export class SaveImage {
             reader.onloadend = () => {
                 const { result } = reader;
                 this.cleanUp(img);
-                resolve((result === null || result === void 0 ? void 0 : result.toString()) || "");
+                resolve(result);
             };
             reader.onerror = () => {
                 this.cleanUp(img);
@@ -63,7 +62,20 @@ export class SaveImage {
             };
             canvas.toBlob(blob => {
                 if (blob !== null) {
-                    reader.readAsDataURL(blob);
+                    switch (this.exportDataType) {
+                        case EExportDataType.ARRAY_BUFFER:
+                            reader.readAsArrayBuffer(blob);
+                            break;
+                        case EExportDataType.BINARY_STRING:
+                            reader.readAsBinaryString(blob);
+                            break;
+                        case EExportDataType.DATA_URL:
+                            reader.readAsDataURL(blob);
+                            break;
+                        default:
+                            reader.readAsDataURL(blob);
+                            break;
+                    }
                 }
                 else {
                     this.cleanUp(img);
@@ -86,7 +98,7 @@ export class SaveImage {
                 reject(ERejectReason.IMAGE_COULD_NOT_LOADED);
                 this.cleanUp(img);
             });
-            img.src = data;
+            img.src = data.toString();
         });
     }
     onChange(e) {
@@ -98,29 +110,13 @@ export class SaveImage {
                     var _a;
                     const data = (_a = readerEvent.target) === null || _a === void 0 ? void 0 : _a.result;
                     if (data) {
-                        resolve(this.imageData(data.toString()));
+                        resolve(this.imageData(data));
                     }
                     else {
                         reject(ERejectReason.FILE_HAS_NO_READIBLE_DATA);
                     }
                 };
-                switch (this.exportDataType) {
-                    case EExportDataType.ARRAY_BUFFER:
-                        reader.readAsArrayBuffer(el.files[0]);
-                        break;
-                    case EExportDataType.BINARY_STRING:
-                        reader.readAsBinaryString(el.files[0]);
-                        break;
-                    case EExportDataType.TEXT:
-                        reader.readAsText(el.files[0]);
-                        break;
-                    case EExportDataType.DATA_URL:
-                        reader.readAsDataURL(el.files[0]);
-                        break;
-                    default:
-                        reader.readAsDataURL(el.files[0]);
-                        break;
-                }
+                reader.readAsDataURL(el.files[0]);
             }
             else {
                 reject(ERejectReason.NO_IMAGE_FILE_SELECTED);

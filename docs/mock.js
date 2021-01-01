@@ -37,9 +37,9 @@ var elementsMatrix = [];
 
 window.addEventListener("load", function () {
   var toBase64 = {
-    Png: saveImageAs.PNG(maxImageWidth, 1),
-    Jpeg: saveImageAs.JPG(maxImageWidth, 1),
-    Webp: saveImageAs.WEBP(maxImageWidth, 1),
+    Png: saveImageAs.PNG(maxImageWidth, 1, 3),
+    Jpeg: saveImageAs.JPG(maxImageWidth, 1, 2),
+    Webp: saveImageAs.WEBP(maxImageWidth, 1, 2),
   };
 
   for (var i = 0; i < formatMatrix.length; i++) {

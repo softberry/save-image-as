@@ -4,14 +4,16 @@
 ![npm](https://img.shields.io/npm/v/save-image-as?style=for-the-badge)
 ![NPM](https://img.shields.io/npm/l/save-image-as?style=for-the-badge)
 
-Convert any image file using html input element to `JPG` , `PNG` or `WEBP` in browser to optionally to Base64, Buffer, Binary or text format.
+Convert any image file using html input element to `JPG` , `PNG` or `WEBP` in browser to optionally to Base64, Buffer or Binary format.
 
 ## How To Use
 
 Get this package from npm:
 `npm install save-image-as` or `yarn add save-image-as`
 
-If you do not have a build routine (webpack, rollout etc.) simply include save-image-as script over an cdn in your html file for example : `<script src="https://unpkg.com/save-image-as@latest/dist/save-image-as.js"></script>`.
+If you do not have a build routine (webpack, rollout etc.) simply include save-image-as script over an cdn in your html file for example :
+
+`<script src="https://unpkg.com/save-image-as@latest/dist/save-image-as.js"></script>`.
 
 See Sample Codes:
 
@@ -62,11 +64,11 @@ Then :
     const fileInput = document.getElementById("upload");
     fileInput.addEventListener("change",myCustomImageHandler);
 
-| Option          | Default | Description                                                                                                           |
-| --------------- | ------- | --------------------------------------------------------------------------------------------------------------------- |
-| `maxImageWidth` | 200     | Define maximum width for the exported image                                                                           |
-| `exportQuality` | .75     | Quality of exported image. Value must be between 0 - 1                                                                |
-| `exportData`    | 2       | `0`:[readAsArrayBuffer][0] <br/> `1`: [readAsBinaryString][1] <br/> `2`:[readAsDataURL][2] <br/> `3`:[readAsText][3]: |
+| Option          | Default | Description                                                                                |
+| --------------- | ------- | ------------------------------------------------------------------------------------------ |
+| `maxImageWidth` | 200     | Define maximum width for the exported image                                                |
+| `exportQuality` | .75     | Quality of exported image. Value must be between 0 - 1                                     |
+| `exportDataAs`  | 2       | `0`:[readAsArrayBuffer][0] <br/> `1`: [readAsBinaryString][1] <br/> `2`:[readAsDataURL][2] |
 
 ## Errors :
 
@@ -94,4 +96,3 @@ Latest 2 versions are tested.
 [0]: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsArrayBuffer
 [1]: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsBinaryString
 [2]: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
-[3]: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsText

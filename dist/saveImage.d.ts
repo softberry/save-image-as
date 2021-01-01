@@ -15,8 +15,7 @@ export declare enum ERejectReason {
 export declare enum EExportDataType {
     ARRAY_BUFFER = 0,
     BINARY_STRING = 1,
-    DATA_URL = 2,
-    TEXT = 3
+    DATA_URL = 2
 }
 export interface ISaveImageOptions {
     maxImageWidth: number;
@@ -33,5 +32,5 @@ export declare class SaveImage {
     private cleanUp;
     private imageLoaded;
     private imageData;
-    onChange(e: Event): Promise<string>;
+    onChange(e: Event): Promise<string | ArrayBuffer | null>;
 }

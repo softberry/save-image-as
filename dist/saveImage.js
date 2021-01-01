@@ -13,8 +13,15 @@ export var ERejectReason;
     ERejectReason["FILE_HAS_NO_READIBLE_DATA"] = "FILE_HAS_NO_READIBLE_DATA";
     ERejectReason["NO_IMAGE_FILE_SELECTED"] = "NO_IMAGE_FILE_SELECTED";
 })(ERejectReason || (ERejectReason = {}));
+export var EExportDataType;
+(function (EExportDataType) {
+    EExportDataType[EExportDataType["ARRAY_BUFFER"] = 0] = "ARRAY_BUFFER";
+    EExportDataType[EExportDataType["BINARY_STRING"] = 1] = "BINARY_STRING";
+    EExportDataType[EExportDataType["DATA_URL"] = 2] = "DATA_URL";
+    EExportDataType[EExportDataType["TEXT"] = 3] = "TEXT";
+})(EExportDataType || (EExportDataType = {}));
 export class SaveImage {
-    constructor({ maxImageWidth = 200, exportFormat = EExportFormat.PNG, exportQuality = 0.7, }) {
+    constructor({ maxImageWidth = 200, exportFormat = EExportFormat.PNG, exportQuality = 0.7, exportDataType = EExportDataType.DATA_URL, }) {
         if (maxImageWidth < 0 || isNaN(maxImageWidth)) {
             throw new Error("`maxImageWidth` should be positive number");
         }
@@ -27,6 +34,7 @@ export class SaveImage {
         this.maxImageWidth = maxImageWidth;
         this.exportFormat = exportFormat;
         this.exportQuality = exportQuality;
+        this.exportDataType = exportDataType;
     }
     cleanUp(img) {
         document.body.removeChild(img);
@@ -96,7 +104,23 @@ export class SaveImage {
                         reject(ERejectReason.FILE_HAS_NO_READIBLE_DATA);
                     }
                 };
-                reader.readAsDataURL(el.files[0]);
+                switch (this.exportDataType) {
+                    case EExportDataType.ARRAY_BUFFER:
+                        reader.readAsArrayBuffer(el.files[0]);
+                        break;
+                    case EExportDataType.BINARY_STRING:
+                        reader.readAsBinaryString(el.files[0]);
+                        break;
+                    case EExportDataType.TEXT:
+                        reader.readAsText(el.files[0]);
+                        break;
+                    case EExportDataType.DATA_URL:
+                        reader.readAsDataURL(el.files[0]);
+                        break;
+                    default:
+                        reader.readAsDataURL(el.files[0]);
+                        break;
+                }
             }
             else {
                 reject(ERejectReason.NO_IMAGE_FILE_SELECTED);

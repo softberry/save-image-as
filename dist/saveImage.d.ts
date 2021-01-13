@@ -23,6 +23,7 @@ export interface ISaveImageOptions {
     exportQuality: number;
     exportDataType: EExportDataType;
 }
+export declare type TConvertedResult = string | ArrayBuffer | null;
 export declare class SaveImage {
     maxImageWidth: number;
     exportFormat: EExportFormat;
@@ -32,5 +33,6 @@ export declare class SaveImage {
     private cleanUp;
     private imageLoaded;
     private imageData;
-    onChange(e: Event): Promise<string | ArrayBuffer | null>;
+    convert(file: File | null): Promise<TConvertedResult>;
+    onChange(e: Event): Promise<TConvertedResult | TConvertedResult[]>;
 }

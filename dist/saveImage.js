@@ -101,27 +101,41 @@ export class SaveImage {
             img.src = data.toString();
         });
     }
+    convert(file) {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (readerEvent) => {
+                var _a;
+                const data = (_a = readerEvent.target) === null || _a === void 0 ? void 0 : _a.result;
+                if (data) {
+                    resolve(this.imageData(data));
+                }
+                else {
+                    reject(ERejectReason.FILE_HAS_NO_READIBLE_DATA);
+                }
+            };
+            if (file === null)
+                resolve(null);
+            else
+                reader.readAsDataURL(file);
+        });
+    }
     onChange(e) {
         const el = e.target;
-        return new Promise((resolve, reject) => {
-            if ((el === null || el === void 0 ? void 0 : el.files) && el.files.length > 0) {
-                const reader = new FileReader();
-                reader.onload = (readerEvent) => {
-                    var _a;
-                    const data = (_a = readerEvent.target) === null || _a === void 0 ? void 0 : _a.result;
-                    if (data) {
-                        resolve(this.imageData(data));
-                    }
-                    else {
-                        reject(ERejectReason.FILE_HAS_NO_READIBLE_DATA);
-                    }
-                };
-                reader.readAsDataURL(el.files[0]);
-            }
-            else {
-                reject(ERejectReason.NO_IMAGE_FILE_SELECTED);
-            }
+        if (!el || el.files === null)
+            return Promise.resolve("");
+        if (el.files.length === 1) {
+            return this.convert(el.files.item(0));
+        }
+        const fileListArray = new Array(el.files.length)
+            .fill(null)
+            .map((_, index) => {
+            var _a;
+            console.log(index);
+            return this.convert(((_a = el === null || el === void 0 ? void 0 : el.files) === null || _a === void 0 ? void 0 : _a.item(index)) || null);
         });
+        return Promise.all(fileListArray);
+        return Promise.resolve("");
     }
 }
 //# sourceMappingURL=saveImage.js.map

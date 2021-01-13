@@ -5,6 +5,7 @@ function createElements(source, target) {
   img.id = target;
   input.type = "file";
   input.id = source;
+  input.multiple = true;
   el.appendChild(img);
   el.appendChild(input);
 
@@ -19,8 +20,13 @@ function convertOnChange(fileInput, targetImg, toBase64) {
         .onChange(e)
         .then(function (base) {
           console.log("done!");
-          targetImg.src = base;
-          targetImg.title = base.slice(0, 32);
+          if (Array.isArray(base)) {
+            targetImg.title = base[0].slice(0, 32);
+            targetImg.src = base[0];
+          } else {
+            targetImg.title = base.slice(0, 32);
+            targetImg.src = base;
+          }
         })
         .catch(function (err) {
           console.log("error: ", err);

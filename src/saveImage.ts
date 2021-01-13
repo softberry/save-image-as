@@ -39,6 +39,9 @@ export interface ISaveImageOptions {
   exportQuality: number;
   exportDataType: EExportDataType;
 }
+
+export type TConvertedResult = string | ArrayBuffer | null;
+
 export class SaveImage {
   /**
    * Allow maximal width for the exported image. Height will be calculated using original aspect ratio to avoid distortion
@@ -56,6 +59,7 @@ export class SaveImage {
    *
    */
   exportDataType: EExportDataType;
+
   constructor({
     maxImageWidth = 200,
     exportFormat = EExportFormat.PNG,
@@ -160,25 +164,38 @@ export class SaveImage {
       img.src = data.toString();
     });
   }
-
-  public onChange(e: Event): Promise<string | ArrayBuffer | null> {
-    const el = e.target as HTMLInputElement;
+  public convert(file: File | null): Promise<TConvertedResult> {
     return new Promise((resolve, reject) => {
-      if (el?.files && el.files.length > 0) {
-        const reader = new FileReader();
-        reader.onload = (readerEvent: ProgressEvent<FileReader>): void => {
-          const data = readerEvent.target?.result;
+      const reader = new FileReader();
+      reader.onload = (readerEvent: ProgressEvent<FileReader>): void => {
+        const data = readerEvent.target?.result;
 
-          if (data) {
-            resolve(this.imageData(data));
-          } else {
-            reject(ERejectReason.FILE_HAS_NO_READIBLE_DATA);
-          }
-        };
-        reader.readAsDataURL(el.files[0]);
-      } else {
-        reject(ERejectReason.NO_IMAGE_FILE_SELECTED);
-      }
+        if (data) {
+          resolve(this.imageData(data));
+        } else {
+          reject(ERejectReason.FILE_HAS_NO_READIBLE_DATA);
+        }
+      };
+      if (file === null) resolve(null);
+      else reader.readAsDataURL(file);
     });
+  }
+  public onChange(e: Event): Promise<TConvertedResult | TConvertedResult[]> {
+    const el = e.target as HTMLInputElement;
+    if (!el || el.files === null) return Promise.resolve("");
+
+    if (el.files.length === 1) {
+      return this.convert(el.files.item(0));
+    }
+    const fileListArray = new Array(el.files.length)
+      .fill(null)
+      .map((_, index) => {
+        console.log(index);
+        return this.convert(el?.files?.item(index) || null);
+      });
+
+    return Promise.all(fileListArray);
+
+    return Promise.resolve("");
   }
 }

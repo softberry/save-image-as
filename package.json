@@ -1,6 +1,6 @@
 {
   "name": "save-image-as",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Convert and resize any image to another format in browser. ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
